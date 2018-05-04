@@ -1,0 +1,52 @@
+﻿<div class="form-group">
+    <div class="container-fluid">
+       
+
+        <cia-customer-search [customerId]="CUST_ID" (customerIdChange)="CUST_ID=$event"></cia-customer-search>
+        <cia-supplier-search [supplierId]="SUPPLIER_ID" (supplierIdChange)="SUPPLIER_ID=$event"></cia-supplier-search>
+            <div class="row">
+                <div class="col-md-2">
+                    Batch ID:
+                </div>
+                <div class="col-md-4">
+                    <kendo-autocomplete [data]="batchOptions" [(ngModel)]="query.BATCH_ID" [suggest]="true">
+
+                    </kendo-autocomplete>
+                </div>
+
+                <div class="col-md-2">
+                    Status
+                </div>
+
+                <div class="col-md-4">
+                    <kendo-dropdownlist name="status"
+                                        [data]="statusOptions"
+                                        [textField]="'text'"
+                                        [valueField]="'value'"
+                                        [value]="query.STATUS"
+                                        [valuePrimitive]="true"
+                                        (valueChange)="hStatus($event)">
+
+                    </kendo-dropdownlist>
+                 
+                </div>
+                
+
+            </div>
+       
+
+        <div class="row" >
+            <div class="col-md-4">
+                <button class="k-button k-primary" (click)="search()">Search</button>
+                <button class="k-button k-primary" (click)="clear()">Clear</button>
+            </div>
+            <div class="col-md-2">
+              
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-2"></div>
+            </div>
+        </div>
+</div>

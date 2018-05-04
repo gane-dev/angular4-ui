@@ -1,0 +1,63 @@
+﻿<!--<div>
+    <kendo-grid [data]="gridView" [height]="300" 
+                [sortable]="{ mode: 'multiple' }" [sort]="sort"
+                (sortChange)="sortChange($event)" [selectable]="true" 
+                (selectionChange)="selectionChange($event)">
+
+        <kendo-grid-column field="header.SOURCE_ID" title="Source">
+        </kendo-grid-column>
+        <kendo-grid-column field="header.LOAD_YEAR" title="Load Year">
+        </kendo-grid-column>
+        <kendo-grid-column field="header.LOAD_PERIOD" title="Load Period">
+        </kendo-grid-column>
+         <kendo-grid-column field="header.BATCH_ID" title="Batch">
+         </kendo-grid-column>
+        <kendo-grid-column field="header.PUBLISH_STATUS" title="Publish Status">
+        </kendo-grid-column>
+             
+        <kendo-grid-column>
+            <template kendoHeaderTemplate>
+                Open
+            </template>
+            <template kendoCellTemplate let-dataItem let-rowIndex="rowIndex">
+                <button (click)="onEdit(dataItem.header.SOURCE_ID,dataItem.header.BATCH_ID)"><i class="fa fa-expand" style="color:green"></i></button>
+            </template>
+        </kendo-grid-column>
+
+     
+</kendo-grid>
+      
+            </div>-->
+<div>
+    <kendo-grid [data]="gridView" [height]="300"
+                [pageSize]="state.take"
+                [skip]="state.skip"
+                [sort]="state.sort"
+              
+                [sortable]="true"
+                [pageable]="true"
+              
+                (dataStateChange)="dataStateChange($event)">
+
+        <kendo-grid-column field="header.SOURCE_ID" title="Source">
+        </kendo-grid-column>
+        <kendo-grid-column field="header.LOAD_YEAR" title="Load Year">
+        </kendo-grid-column>
+        <kendo-grid-column field="header.LOAD_PERIOD" title="Load Period">
+        </kendo-grid-column>
+        <kendo-grid-column field="header.BATCH_ID" title="Batch">
+        </kendo-grid-column>
+        <kendo-grid-column field="header.PUBLISH_STATUS" title="Publish Status">
+        </kendo-grid-column>
+
+        <kendo-grid-column>
+            <template kendoHeaderTemplate>
+                Open
+            </template>
+            <template kendoCellTemplate let-dataItem let-rowIndex="rowIndex">
+                <button (click)="onEdit(dataItem.header.SOURCE_ID,dataItem.header.BATCH_ID)"><i class="fa fa-expand" style="color:green"></i></button>
+            </template>
+        </kendo-grid-column>
+    </kendo-grid>
+
+</div>

@@ -1,0 +1,69 @@
+﻿<form [formGroup]="qaGroup">
+    <div class="form-group">
+        <fieldset>
+
+            <div class="ui-grid-row">
+
+                <div class="ui-grid-col-4">
+                    QA Review Status
+                </div>
+                <div class="ui-grid-col-4">
+                    <input type="text" class="form-control" formControlName="QA_REVIEW_STATUS" />
+                </div>
+
+
+                <div class="ui-grid-col-4">
+                    Last Reviewed By:
+                </div>
+                <div class="ui-grid-col-4">
+                    <input type="text" class="form-control" formControlName="LAST_REVIEWED_BY" />
+                </div>
+
+
+            </div>
+            <div class="ui-grid-row">
+
+                <div class="ui-grid-col-6">
+                    QA Review Action:
+                </div>
+                <div class="ui-grid-col-6">
+                    <input type="text" class="form-control" formControlName="QA_REVIEW_ACTION_CODE" />
+                </div>
+
+
+                <div class="ui-grid-col-6">
+                    QA Review Action Description:
+                </div>
+                <div class="ui-grid-col-6">
+                    <input type="text" class="form-control" formControlName="QA_REVIEW_ACTION_DESCR" />
+                </div>
+                <div class="ui-grid-col-6">
+                    QA Passed by:
+                </div>
+                <div class="ui-grid-col-6">
+                    <input type="text" class="form-control" formControlName="QA_PASSED_BY" />
+                </div>
+
+            </div>
+            <div class="ui-grid-row">
+
+                <div class="ui-grid-col-4">
+                    QA Pass Status:
+                </div>
+                <div class="ui-grid-col-4">
+                    <input type="text" class="form-control" formControlName="QA_PASS_STATUS" />
+                </div>
+
+
+                <div class="ui-grid-col-4">
+                    Review Complete Date:
+                </div>
+                <div class="ui-grid-col-4">
+                    <input type="text" class="form-control" formControlName="QA_REVIEW_COMPLETE_DATE" />
+                </div>
+
+
+            </div>
+        </fieldset>
+    </div>
+</form>

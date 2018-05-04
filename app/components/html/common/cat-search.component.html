@@ -1,0 +1,22 @@
+﻿<div class="row">
+    <div class="col-md-2">
+        Category
+    </div>
+    <div class="col-md-4">
+        <kendo-autocomplete #catList [data]="catData" [value]="catId" [valueField]="'CATEGORY'" [filterable]="true" (valueChange)="selectCatId($event)">
+            <template kendoAutoCompleteItemTemplate let-result1>
+                <span style="color: #00F;">{{result1.CATEGORY + " " + result1.LONG_DESCRIPTION}}</span>
+            </template>
+        </kendo-autocomplete>
+    </div>
+    <div class="col-md-2">
+        Description:
+    </div>
+    <div class="col-md-4">
+        <kendo-autocomplete #catDescList [data]="catData" [value]="catDesc" [valueField]="'LONG_DESCRIPTION'" [filterable]="true" (valueChange)="selectCatDesc($event)">
+            <template kendoAutoCompleteItemTemplate let-result1>
+                <span style="color: #00F;">{{result1.CATEGORY + " " + result1.LONG_DESCRIPTION}}</span>
+            </template>
+        </kendo-autocomplete>
+    </div>
+</div>

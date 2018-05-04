@@ -1,0 +1,3 @@
+<template ngFor let-item [ngForOf]="filterItems" let-i="index" >
+  <cia-single-filter [filterItem] ="item" (add)="addFilter($event)" (remove)="removeFilter($event)" ></cia-single-filter>
+</template>

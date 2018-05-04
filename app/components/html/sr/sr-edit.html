@@ -1,0 +1,107 @@
+﻿<div class="form-group">
+
+    <form #srDetaisForm="ngForm">
+        <div class="row">
+            <div class="col-md-2">Rule Id:{{spendRuleFields.RULE_ID}}</div>
+            <div class="col-md-2">
+                Rule Level
+            </div>
+            <div class="col-md-2">
+                <kendo-dropdownlist name="spendRuleFields.RULE_LEVEL" #RULE_LEVEL="ngModel" required
+                                    [data]="rlItems"
+                                    [textField]="'text'"
+                                    [valueField]="'value'"
+                                    [value]="spendRuleFields.RULE_LEVEL"
+                                    [ngModel]="spendRuleFields.RULE_LEVEL"
+                                    [valuePrimitive]="true"
+                                    (valueChange)="hRlItme($event)">
+
+                </kendo-dropdownlist>
+            
+                <div [hidden]="RULE_LEVEL.valid">
+                    *
+                </div>
+            </div>
+        
+            <div class="col-md-2">
+                Rule Description
+            </div>
+            <div class="col-md-4">
+                <input type="text" class="form-control" [(ngModel)]="spendRuleFields.RULE_DESCRIPTION" name="RULE_DESCRIPTION" #RULE_DESCRIPTION="ngModel" required />
+                <div [hidden]="RULE_DESCRIPTION.valid ">
+                    *
+                </div>
+            </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    Effective Date
+                </div>
+                <div class="col-md-2">
+                    <input type="text" class="form-control" [(ngModel)]="spendRuleDtl.EFF_DATE" name="EFF_DATE" #EFF_DATE="ngModel" required />
+                    <div [hidden]="EFF_DATE.valid ">*</div>
+                </div>
+                <div class="col-md-2">Status </div>
+                <div class="col-md-2">
+                    <kendo-dropdownlist name="STATUS" #STATUS="ngModel" required
+                                        [data]="statusOptions"
+                                        [textField]="'text'"
+                                        [valueField]="'value'"
+                                        [ngModel]="spendRuleDtl.STATUS"
+                                        [valuePrimitive]="true"
+                                        (valueChange)="hStatusOption($event)">
+
+                    </kendo-dropdownlist>
+
+                    <div [hidden]="STATUS.valid ">
+                        *
+                    </div>
+                </div>
+                <div class="col-md-2">Reason </div>
+                <div class="col-md-2">
+                    <kendo-dropdownlist name="REASON_CODE"
+                                        [data]="reasonOptions"
+                                        [textField]="'text'"
+                                        [valueField]="'value'"
+                                        [value]="spendRuleDtl.REASON_CODE"
+                                        [valuePrimitive]="true"
+                                        (valueChange)="hReasonOption($event)">
+                    </kendo-dropdownlist>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    Ignore?
+                    <input type="checkbox" class="form-control" [(ngModel)]="spendRuleDtl.IGNORE_FLG" [checked]="IGNORE_FLG === 'Y'?true:false"
+                 name="IGNORE_FLG"/> 
+                    <!--<kendo-switch [(ngModel)]="ignoreFlag" [offLabel]="'N'" [onLabel]="'Y'" (valueChange)="switchFlag($event)" name="IGNORE_FLG"></kendo-switch>-->
+                </div>
+                <div class="col-md-2">Tolerance% </div>
+                <div class="col-md-2">
+                    <input type="text" class="form-control" [(ngModel)]="spendRuleDtl.TOLERANCE_PCT" name="TOLERANCE_PCT" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">Created by </div>
+                <div class="col-md-3"><input type="text" disabled class="form-control" [(ngModel)]="spendRuleDtl.CREATED_BY" name="CREATED_BY" /> </div>
+                <div class="col-md-3">Created Date </div>
+                <div class="col-md-3"><input type="text" disabled class="form-control" [(ngModel)]="spendRuleDtl.DATE_CREATED" name="DATE_CREATED" /> </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">Last Mod By </div>
+                <div class="col-md-3"><input disabled type="text" class="form-control" [(ngModel)]="spendRuleDtl.UPDATED_BY" name="UPDATED_BY" /> </div>
+                <div class="col-md-3">Last Mod Date </div>
+                <div class="col-md-3"><input type="text" disabled class="form-control" [(ngModel)]="spendRuleDtl.DATE_LAST_UPDATED" name="DATE_LAST_UPDATED" />        </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    Comments
+                </div>
+                <div class="col-md-10">
+                    <textarea [(ngModel)]="spendRuleDtl.COMMENTS" style="width:100%" name="COMMENTS"></textarea>
+                </div>
+            </div>
+
+</form>
+    </div>

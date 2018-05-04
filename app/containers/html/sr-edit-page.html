@@ -1,0 +1,174 @@
+﻿
+<h3>Spend Incident Rules</h3>
+
+<div>
+    <div class="form-group">
+
+        <form #srDetailsForm="ngForm">
+            <div class="row">
+                <div class="col-md-2">Rule Id: </div> 
+                 
+                    <div class="col-md-2">
+                        <input class="k-input" type="text" [(ngModel)]="spendRuleFields.RULE_ID" name="RULE_ID" #RULE_ID="ngModel" required disabled />
+                    </div>
+                    <div class="col-md-2">
+                        Rule Level
+                    </div>
+                    <div class="col-md-2">
+                        <kendo-dropdownlist name="RULE_LEVEL" #RULE_LEVEL="ngModel" required
+                                            [data]="rlItems"
+                                            [textField]="'text'"
+                                            [valueField]="'value'"
+                                            [value]="spendRuleFields.RULE_LEVEL"
+                                            [(ngModel)]="spendRuleFields.RULE_LEVEL"
+                                            [valuePrimitive]="true"
+                                            (valueChange)="hRlItme($event)">
+
+                        </kendo-dropdownlist>
+
+                        <div [hidden]="RULE_LEVEL.valid">
+                            *
+                        </div>
+                    </div>
+
+                    <div class="col-md-2">
+                        Rule Description
+                    </div>
+                    <div class="col-md-2">
+                        <input class="k-input" type="text" [(ngModel)]="spendRuleFields.RULE_DESCRIPTION" name="RULE_DESCRIPTION" #RULE_DESCRIPTION="ngModel" required />
+                        <div [hidden]="RULE_DESCRIPTION.valid ">
+                            *
+                        </div>
+                    </div>
+                </div>
+            <div class="row">
+                <div class="col-md-2">
+                    Effective Date
+                </div>
+                <div class="col-md-2">
+                    <kendo-dateinput  [(ngModel)]="spendRuleDtl.EFF_DATE" name="EFF_DATE" #EFF_DATE="ngModel" required> </kendo-dateinput>
+                    <div [hidden]="EFF_DATE.valid ">*</div>
+                 </div>
+                   
+                    <div class="col-md-2">Status </div>
+                    <div class="col-md-2">
+                        <kendo-dropdownlist  name="STATUS" #STATUS="ngModel" required
+                                            [data]="statusOptions"
+                                            [textField]="'text'"
+                                            [valueField]="'value'"
+                                            [value]="spendRuleDtl.STATUS"
+                                             [(ngModel)]="spendRuleDtl.STATUS"
+                                            [valuePrimitive]="true"
+                                            (valueChange)="hStatusOption($event)">
+
+                        </kendo-dropdownlist>
+
+                        <div [hidden]="STATUS.valid ">
+                            *
+                        </div>
+                    </div>
+                    <div class="col-md-2">Reason </div>
+                    <div class="col-md-2">
+                        <kendo-dropdownlist  name="REASON_CODE"
+                                            [data]="reasonOptions"
+                                            [textField]="'text'"
+                                            [valueField]="'value'"
+                                            [value]="spendRuleDtl.REASON_CODE"
+                                             [(ngModel)]="spendRuleDtl.REASON_CODE"
+                                            [valuePrimitive]="true"
+                                            (valueChange)="hReasonOption($event)">
+                        </kendo-dropdownlist>
+                    </div>
+                </div>
+            <div class="row">
+                <div class="col-md-2">
+                    Ignore?
+                </div>
+                    <div class="col-md-2">
+                        <input type="checkbox"  (click)="ignoreTransaction($event)" [checked]="spendRuleDtl.IGNORE_FLG === 'Y'?true:false"
+                               name="IGNORE_FLG" />
+                        <!--<kendo-switch [(ngModel)]="ignoreFlag" [offLabel]="'N'" [onLabel]="'Y'" (valueChange)="switchFlag($event)" name="IGNORE_FLG"></kendo-switch>-->
+                    </div>
+                <div class="col-md-2">Tolerance% </div>
+                <div class="col-md-2">
+                    <kendo-numerictextbox [spinners]="true"
+                                          [step]=".01"
+                                          [value]="spendRuleDtl.TOLERANCE_PCT" (valueChange) ="toleranceChange($event)" name="TOLERANCE_PCT"></kendo-numerictextbox>
+                   <!-- <input type="text" class="k-input" [(ngModel)]="spendRuleDtl.TOLERANCE_PCT" name="TOLERANCE_PCT" />-->
+                </div>
+                <div class="col-md-2">Last Mod Date </div>
+                <div class="col-md-2"><input class="k-input" type="text" disabled [(ngModel)]="spendRuleDtl.DATE_LAST_UPDATED" name="DATE_LAST_UPDATED" />        </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">Created by </div>
+                <div class="col-md-2"><input class="k-input" type="text" disabled [(ngModel)]="spendRuleDtl.CREATED_BY" name="CREATED_BY" /> </div>
+                <div class="col-md-2">Created Date </div>
+                <div class="col-md-2"><input class="k-input" type="text" disabled  [(ngModel)]="spendRuleDtl.DATE_CREATED" name="DATE_CREATED" /> </div>
+                <div class="col-md-2">Last Mod By </div>
+                <div class="col-md-2"><input class="k-input" disabled type="text" [(ngModel)]="spendRuleDtl.UPDATED_BY" name="UPDATED_BY" /> </div>
+            </div>
+           
+            <div class="row">
+                <div class="col-md-2">
+                    Comments
+                </div>
+                <div class="col-md-10">
+                    <textarea [(ngModel)]="spendRuleDtl.COMMENTS" style="width:100%" name="COMMENTS" cols="80" rows="3"></textarea>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+<div class="panelbar-wrapper">
+    <kendo-panelbar expandMode="single">
+        <kendo-panelbar-item [title]="'Suppliers'" >
+            <ng-template kendoPanelBarContent>
+                <div>
+                    <cia-sr-supplier [spendRuleSupp]="suppliers$ | async" [effDate]="EFF_DATE.value" [ruleId]="RULE_ID.value"></cia-sr-supplier>
+                    </div>
+                   
+            </ng-template>
+        </kendo-panelbar-item>
+        <kendo-panelbar-item [title]="'Customers'" >
+            <ng-template kendoPanelBarContent>
+                <div>
+                    <cia-sr-customer [spendRuleCust]="customers$ | async" [effDate]="EFF_DATE.value" [ruleId]="RULE_ID.value"></cia-sr-customer>
+                </div>
+
+            </ng-template>
+        </kendo-panelbar-item>
+        <kendo-panelbar-item [title]="'Categories'" >
+            <ng-template kendoPanelBarContent>
+                <div>
+                    <cia-sr-category [spendRuleCat]="categories$ | async" [effDate]="EFF_DATE.value" [ruleId]="RULE_ID.value"></cia-sr-category>
+                </div>
+
+            </ng-template>
+        </kendo-panelbar-item>
+       
+    </kendo-panelbar>
+    </div>
+    <!--<kendo-tabstrip>
+
+        <kendo-tabstrip-tab [title]="'Suppliers'" [selected]="true">
+            <cia-sr-supp [supp]="suppliers$ | async"></cia-sr-supp>
+
+        </kendo-tabstrip-tab>
+        <kendo-tabstrip-tab [title]="'Customers'">
+            <cia-sr-cust [spendRuleCust]="customers$ | async"></cia-sr-cust>
+
+        </kendo-tabstrip-tab>
+        <kendo-tabstrip-tab [title]="'Categories'">
+            <cia-sr-cat [spendRuleCat]="categories$ | async"></cia-sr-cat>
+
+        </kendo-tabstrip-tab>
+    </kendo-tabstrip>-->
+    <div class="row">
+        <div class="col-md-6">
+            <button class="k-button k-primary" (click)="onSave()">Save</button>
+            <button class="k-button k-primary" (click)="onDelete()">Delete</button>
+            <button class="k-button k-primary" id="back" (click)="backToSearch()">Back</button>
+        </div>
+        
+    </div>

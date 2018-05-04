@@ -1,0 +1,32 @@
+﻿<kendo-grid [(data)]="gridView" style="height:100%" [sortable]="{ mode: 'multiple' }" [sort]="sort" (sortChange)="sortChange($event)">
+<kendo-grid-column field="EFF_DATE" title="Eff Date"></kendo-grid-column>
+<kendo-grid-column field="SOURCE_ID" title="Source Id"></kendo-grid-column>
+<kendo-grid-column field="STATUS" title="Status"></kendo-grid-column>
+
+<kendo-grid-column field="RULE_STATUS" title="Rule Status"></kendo-grid-column>
+<kendo-grid-column field="CREATED_BY" title="Created By"></kendo-grid-column>
+
+<kendo-grid-column field="UPDATED_BY" title="Updated By"></kendo-grid-column>
+<kendo-grid-column field="DATE_CREATED" title="Date Created"></kendo-grid-column>
+
+<kendo-grid-column field="DATE_LAST_UPDATED" title="Date Updated">
+  
+</kendo-grid-column>
+<kendo-grid-column field="REASON_CODE" title="Reason Code"></kendo-grid-column>
+
+<kendo-grid-column field="REASON_CODE" title="Reason Desc"></kendo-grid-column>
+<kendo-grid-column field="RULE_SOURCE" title="Rule Source"></kendo-grid-column>
+<kendo-grid-column>
+    <template kendoHeaderTemplate>
+        <button (click)="onAdd()"><i class="fa fa-plus"></i></button>
+
+    </template>
+    <template kendoCellTemplate let-dataItem>
+        <button (click)="onEdit(dataItem)"><i class="fa fa-edit" style="color:green"></i>
+</button>
+<button (click)="onDelete(dataItem)"><i class="fa fa-ban" style="color:red"></i>
+</button>
+</template>
+</kendo-grid-column>
+</kendo-grid>
+<cia-psr-grid-edit [(model)]="dataItem" (cancel)="onCancel()"></cia-psr-grid-edit>

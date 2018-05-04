@@ -1,0 +1,14 @@
+﻿<div>
+    
+    <kendo-dialog *ngIf="infoOpened | async" (close)="infoClose('cancel')">
+        <kendo-dialog-titlebar>
+            <div class="{{dialogColor | async }}">
+                {{dialogTitle | async }}
+            </div>
+        </kendo-dialog-titlebar>
+        <p style="margin: 20px; text-align: center;">{{infoMessage | async}}</p>
+        <kendo-dialog-actions>
+            <button kendoButton (click)="infoClose('ok')">Ok</button>
+        </kendo-dialog-actions>
+    </kendo-dialog>
+</div>

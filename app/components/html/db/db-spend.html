@@ -1,0 +1,30 @@
+﻿<kendo-grid [data]="gridView"   [height]="300" [sortable]="{ mode: 'multiple' }" [sort]="sort"
+          (sortChange)="sortChange($event)">
+    <kendo-grid-column field="LOAD_YEAR" title="Load Year" >
+    </kendo-grid-column>
+    <kendo-grid-column field="LOAD_PERIOD" title="Load Period">
+    </kendo-grid-column>
+    <kendo-grid-column field="BATCH_ID" title="Batch ID" >
+    </kendo-grid-column>
+    <kendo-grid-column field="SPEND_TOTAL" title="Total Spend Amount (USD)" >
+    </kendo-grid-column>
+    <kendo-grid-column field="SPEND_IN_SCOPE" title="In-Scope Spend Amount (USD)">
+    </kendo-grid-column>
+    <kendo-grid-column field="SPEND_OUT_SCOPE" title="Out-of-Scope Spend Amount (USD)" >
+    </kendo-grid-column>
+    <kendo-grid-column field="SPEND_PERCENT_IN_SCOPE" title="In-Scope %" >
+    </kendo-grid-column>
+    <kendo-grid-column field="SPEND_PERCENT_OUT_SCOPE" title="Out-of-Scope %" >
+    </kendo-grid-column>
+    <kendo-grid-column field="GOOD_SPEND_AMT" title="Good Spend Amount (USD)" >
+    </kendo-grid-column>
+
+    <kendo-grid-column field="BAD_SPEND_AMT" title="Bad Spend Amount (USD)" >
+    </kendo-grid-column>
+
+    <kendo-grid-column field="GOOD_SPEND_PERCENT" title="% Good Spend" >
+    </kendo-grid-column>
+
+    <kendo-grid-column field="BAD_SPEND_PERCENT" title="% Bad Spend" >
+    </kendo-grid-column>
+</kendo-grid>

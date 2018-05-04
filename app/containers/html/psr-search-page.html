@@ -1,0 +1,9 @@
+﻿<h3>PSR Exception Rules Search</h3>
+<div>
+    <div style="height:20%">
+<cia-psr-search [query]="query | async"></cia-psr-search>
+</div>
+<div style="height:80%">
+    <cia-psr-list [psrrule]="psrExceptions$ | async"></cia-psr-list>
+</div>
+</div>

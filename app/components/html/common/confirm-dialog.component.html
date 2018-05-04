@@ -1,0 +1,15 @@
+﻿<div>
+<kendo-dialog *ngIf="opened | async" (close)="close('cancel')">
+    <kendo-dialog-titlebar>
+        <div style="background-color:#0275d8">
+           {{ titleMessage | async}}
+        </div>
+    </kendo-dialog-titlebar>
+
+    <p style="margin: 20px; text-align: center;">{{confirmMessage | async}}?</p>
+    <kendo-dialog-actions>
+        <button kendoButton (click)="close('no')">No</button>
+        <button kendoButton (click)="close('yes')" primary="true">Yes</button>
+    </kendo-dialog-actions>
+</kendo-dialog>
+</div>

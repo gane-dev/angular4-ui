@@ -1,0 +1,59 @@
+<kendo-grid [data]="gridView" 
+         style="height: 400" 
+         [sortable]="{ mode: 'multiple' }" 
+         [sort]="sort" 
+         (sortChange)="sortChange($event)" 
+         [scrollable]="'scrollable'"
+         [pageSize]="pageSize"
+          [skip]="skip"
+          [pageable]="true"
+            (pageChange)="pageChange($event)"
+            >
+     <kendo-grid-column field="CP_CUST_NAME" title="CP Customer Name"  width="100px">
+    </kendo-grid-column>
+    <kendo-grid-column field="CP_SUPP_NAME" title="CP_SUPP_NAME"  width="100px">
+    </kendo-grid-column>
+    <kendo-grid-column field="CUST_ID" title="AvCustomer" width="60px">
+    </kendo-grid-column>
+    <kendo-grid-column field="SUPPLIER_ID" title="AvSupplier" width="60px">
+    </kendo-grid-column>
+    <kendo-grid-column field="CP_TRANS_ID_XREF" title="TransactionID" width="60px">
+    </kendo-grid-column>
+    <kendo-grid-column field="CP_TRANS_DATE" title="TransactionDate" width="60px">
+    </kendo-grid-column>
+    <kendo-grid-column field="SUPP_MTCH_STATUS" title="SuppMtch" width="30px">
+    </kendo-grid-column>
+    <kendo-grid-column field="CUST_MTCH_STATUS" title="CustMtch" width="30px">
+    </kendo-grid-column>
+    <kendo-grid-column width="30px">
+        <template kendoHeaderTemplate>
+            <input type="checkbox" (click)="excludeAll($event.target.checked)" />
+        </template>
+        <template kendoCellTemplate let-dataItem>
+            <input type="checkbox" [checked]="dataItem.PUBLISH_INC_EXC_IND === 'E'?true:false" (click)="excludeTransaction(dataItem)" />
+
+        </template>
+    </kendo-grid-column>
+    <kendo-grid-column field="SPEND_TOTAL" title="Spend(USD)" width="50px">
+    </kendo-grid-column>
+    <kendo-grid-column field="SPEND_IN_SCOPE" title="In-Scope(USD)" width="50px">
+    </kendo-grid-column>
+    <kendo-grid-column field="SPEND_OUT_SCOPE" title="Out-of-Scope(USD)" width="50px">
+    </kendo-grid-column>
+    <kendo-grid-column field="SPEND_PERCENT_IN_SCOPE" title="In%" width="30px">
+    </kendo-grid-column>
+    <kendo-grid-column field="SPEND_PERCENT_OUT_SCOPE" title="Out%" width="30px">
+    </kendo-grid-column>
+    <kendo-grid-column field="GOOD_SPEND_AMT" title="GoodSpend(USD)" width="30px">
+    </kendo-grid-column>
+
+    <kendo-grid-column field="BAD_SPEND_AMT" title="BadSpend(USD)" width="30px">
+    </kendo-grid-column>
+
+    <kendo-grid-column field="GOOD_SPEND_PERCENT" title="%GoodSpend" width="30px">
+    </kendo-grid-column>
+
+    <kendo-grid-column field="BAD_SPEND_PERCENT" title="%BadSpend" width="30px">
+    </kendo-grid-column>
+    
+</kendo-grid>

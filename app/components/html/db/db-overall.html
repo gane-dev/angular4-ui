@@ -1,0 +1,20 @@
+﻿<kendo-grid [data]="gridView"   [height]="300" [sortable]="{ mode: 'multiple' }" [sort]="sort"
+          (sortChange)="sortChange($event)">
+    <kendo-grid-column field="LOAD_YEAR" title="Load Year" >
+    </kendo-grid-column>
+    <kendo-grid-column field="LOAD_PERIOD" title="Load Period">
+    </kendo-grid-column>
+    <kendo-grid-column field="BATCH_ID" title="Batch ID" >
+    </kendo-grid-column>
+    <kendo-grid-column field="CUST_COUNT" title="# of CP Customers" >
+    </kendo-grid-column>
+    <kendo-grid-column field="SUPP_COUNT" title="# of CP Suppliers" >
+    </kendo-grid-column>
+    <kendo-grid-column field="TRANS_COUNT" title="# of CP Transactions (Invoices or POs)" >
+    </kendo-grid-column>
+    <kendo-grid-column field="LINE_COUNT" title="# of CP Transaction Lines" >
+    </kendo-grid-column>
+    <kendo-grid-column field="TRANS_MAX_DATE" title="Max Transaction Date">
+    </kendo-grid-column>
+
+</kendo-grid>

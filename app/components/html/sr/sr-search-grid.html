@@ -1,0 +1,55 @@
+﻿
+<div>
+    <kendo-grid [height]="300"
+                [selectable]="true"
+                [data]="gridView"
+                [pageSize]="state.take"
+                [skip]="state.skip"
+                [sort]="state.sort"
+                [filter]="state.filter"
+                [sortable]="true"
+                [pageable]="true"
+                [filterable]="true"
+                (dataStateChange)="dataStateChange($event)">
+        <kendo-grid-column field="RULE_ID" title="ID" width="30" [filterable]="false">
+        </kendo-grid-column>
+
+        <!--<kendo-grid-column field="rules.RULE_LEVEL" title="Rule Level" width="60">
+            <template kendoGridFilterCellTemplate let-filter let-column="column">
+                <kendo-grid-string-filter-cell [showOperators]="false"
+                                               [column]="column"
+                                               [filter]="filter">
+                </kendo-grid-string-filter-cell>
+            </template>
+        </kendo-grid-column>-->
+        <kendo-grid-column field="EFF_DATE" title="Effective Data" width="60" >
+            <template kendoGridFilterCellTemplate let-filter let-column="column">
+                <kendo-grid-string-filter-cell [showOperators]="false"
+                                               [column]="column"
+                                               [filter]="filter">
+                </kendo-grid-string-filter-cell>
+            </template>
+         </kendo-grid-column>
+
+                <kendo-grid-column field="STATUS" title="Status" width="30" [filterable]="false">
+                 </kendo-grid-column>
+                 <kendo-grid-column field="IGNORE_FLG" title="Ignore" width="30" [filterable]="false">
+                 </kendo-grid-column>
+        <kendo-grid-column field="TOLERANCE_PCT" title="Tolerance" width="30" [filterable]="false">
+        </kendo-grid-column>
+        <kendo-grid-column field="REASON_CODE" title="Reason" width="30" [filterable]="false">
+        </kendo-grid-column>
+        <kendo-grid-column [filterable]="false" width="60">
+            <template kendoGridHeaderTemplate>
+                Open
+            </template>
+            <template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                <button (click)="onEdit(dataItem.RULE_ID)">Edit</button>
+                <!--<button (click)="onCust(dataItem.RULE_ID)">Customer</button>
+                <button (click)="onSupp(dataItem.RULE_ID)">Supplier</button>
+                <button (click)="onCat(dataItem.RULE_ID)">Category</button>-->
+            </template>
+        </kendo-grid-column>
+        </kendo-grid>
+
+    </div>

@@ -1,0 +1,61 @@
+﻿<div class="form-group">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2">
+                Rule Level
+            </div>
+            <div class="col-md-2">
+                 <kendo-dropdownlist 
+                                   name="RULE_LEVEL" 
+                                    [data]="ruleLevelOptions"
+                                    [textField]="'text'"
+                                    [valueField]="'value'"
+                                    [value]="ruleLevel"
+                                     [valuePrimitive]="true"
+                                     (valueChange)="hRuleLevel($event)">
+
+                </kendo-dropdownlist>
+                <!--<kendo-dropdownlist [data]="ruleLevelOptions"
+                                    [textField]="'text'"
+                                    [valueField]="'value'"
+                                    [valuePrimitive]="true"
+                                    [(ngModel)]="query.RULE_LEVEL" name="RULE_LEVEL">
+                </kendo-dropdownlist>-->
+            </div>
+            <div class="col-md-2">
+                Customer ID
+            </div>
+            <div class="col-md-2">
+                <!--<p-autoComplete formControlName="CUST_ID" [suggestions]="custIdResults" (completeMethod)="searchCustId($event)" field="CUST_ID" (onSelect)="custComplete($event)">
+                <template let-customer>
+                    <div>{{customer.CUST_ID + " " + customer.CUST_NAME}}</div>
+                </template>
+            </p-autoComplete>-->
+                <input type="text" class="form-control" [ngModel]="custId" name="CUST_ID" (ngModelChange)="custChange($event)"/>
+            </div>
+            <div class="col-md-4">
+                 <span>Name: {{custName != undefined ?custName.CUST_NAME:'' }}</span>
+               
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-2">
+                Supplier ID
+            </div>
+
+            <div class="col-md-2">
+                <input type="text" class="form-control" [(ngModel)]="suppId" name="SUPPLIER_ID" (ngModelChange)="suppChange($event)"/>
+
+            </div>
+            <div class="col-md-4">
+               <span>Name: {{suppName != undefined ?suppName.SUPPLIER_NAME:''}}</span>
+            </div>
+        </div>
+
+       
+     
+    </div>
+   
+        </div>

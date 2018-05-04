@@ -1,0 +1,30 @@
+﻿<kendo-grid [data]="gridView"   [height]="300" [sortable]="{ mode: 'multiple' }" [sort]="sort"
+          (sortChange)="sortChange($event)">
+    <kendo-grid-column field="LOAD_YEAR" title="Load Year" >
+    </kendo-grid-column>
+    <kendo-grid-column field="LOAD_PERIOD" title="Load Period">
+    </kendo-grid-column>
+    <kendo-grid-column field="BATCH_ID" title="Batch ID">
+    </kendo-grid-column>
+    <kendo-grid-column field="SUPP_MTCH_COUNT" title="Supplier Match Count">
+    </kendo-grid-column>
+    <kendo-grid-column field="SUPP_MTCH_PERCENT" title="% Suppliers Matched">
+    </kendo-grid-column>
+    <kendo-grid-column field="AV_SUPP_COUNT" title="Avendra Supplier Match Count">
+    </kendo-grid-column>
+    <kendo-grid-column field="AV_PROSPECT_COUNT" title="Avendra Prospect Match Count">
+    </kendo-grid-column>
+    <kendo-grid-column field="AV_SUPP_PERCENT" title="% Avendra Suppliers">
+    </kendo-grid-column>
+    <kendo-grid-column field="AV_PROSPECT_PERCENT" title="% Avendra Prospects">
+    </kendo-grid-column>
+
+    <kendo-grid-column field="NEW_SUPP_MTCH_COUNT" title="New Supplier Match Count">
+    </kendo-grid-column>
+    <kendo-grid-column field="CUST_MTCH_COUNT" title="Customer Match Count">
+    </kendo-grid-column>
+    <kendo-grid-column field="CUST_MTCH_PERCENT" title="% Customers Matched">
+    </kendo-grid-column>
+    <kendo-grid-column field="NEW_CUST_MTCH_COUNT" title="New Customer Match Count">
+    </kendo-grid-column>
+</kendo-grid>

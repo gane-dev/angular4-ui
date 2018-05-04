@@ -1,0 +1,25 @@
+﻿
+
+        <div class="row">
+            <div class="col-md-2">
+                Supplier ID
+            </div>
+            <div class="col-md-4">
+                <kendo-autocomplete #suppId [data]="suppData" [value]="supplierId" [valueField]="'SUPPLIER_ID'" (valueChange)="selectSupplierId($event)" [filterable]="true" (blur)="applyfilter($event)">
+                    <template kendoAutoCompleteItemTemplate let-query>
+                        <span style="color: #00F;">{{query.SUPPLIER_ID + " " + query.SUPPLIER_NAME}}</span>
+                    </template>
+                </kendo-autocomplete>
+            </div>
+            <div class="col-md-2">
+                Supplier Name
+            </div>
+            <div class="col-md-4">
+                <kendo-autocomplete #suppName [data]="suppData" [value]="supplierName" [valueField]="'SUPPLIER_NAME'" (valueChange)="selectSupplierName($event)" [filterable]="true" (blur)="applyfilter1($event)">
+                    <template kendoAutoCompleteItemTemplate let-query>
+                        <span style="color: #00F;">{{query.SUPPLIER_ID + " " + query.SUPPLIER_NAME}}</span>
+                    </template>
+                </kendo-autocomplete>
+            </div>
+        </div>
+    

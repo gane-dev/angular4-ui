@@ -1,0 +1,45 @@
+﻿<kendo-dialog *ngIf="active" title="Add / Modify Category" (onClose)="active=false">
+
+    <div class="form-group">
+        <form #custEditForm="ngForm">
+
+            <div class="row">
+                <div class="col-md-2">
+                    Customer ID
+                </div>
+                <div class="col-md-2">
+
+                    <input type="text" class="form-control" [(ngModel)]="dataItem.CUST_ID" name="CUST_ID" #CUST_ID="ngModel" required/>
+                    <div [hidden]="CUST_ID.valid " class="alert alert-danger validation">
+                        *
+                    </div>
+                </div>
+<div class="col-md-2">
+                    Customer Type
+                </div>
+                <div class="col-md-2">
+                    <kendo-dropdownlist name="CUST_TYPE" #CUST_TYPE="ngModel" required
+                                        [data]="custTypeOptions"
+                                        [textField]="'text'"
+                                        [valueField]="'value'"
+                                        [ngModel]="dataItem.CUST_TYPE"
+                                        [valuePrimitive]="true"
+                                        (valueChange)="hCustType($event)">
+                    </kendo-dropdownlist>
+                    <!--<kendo-dropdownlist [data]="custTypeOptions" [textField]="'text'" [valueField]="'value'" [(ngModel)]="dataItem.CUST_TYPE"
+                        [valuePrimitive]="true" name="CUST_TYPE"  #CUST_TYPE="ngModel" required>
+                    </kendo-dropdownlist>-->
+                    <div [hidden]="CUST_TYPE.valid " class="alert alert-danger validation">
+                        *
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+
+    <kendo-dialog-actions>
+        <button class="k-button" (click)="onCancel($event)">Cancel</button>
+        <button class="k-button k-primary" (click)="onSave(dataItem)" [disabled]="!custEditForm.form.valid">Save</button>
+    </kendo-dialog-actions>
+</kendo-dialog>

@@ -1,0 +1,32 @@
+<h3>Login</h3>
+<div class="form-group" style="align-content: center">
+    <div class="row">
+
+        <div class="col-md-2">
+            User Name
+        </div>
+        <div class="col-md-2">
+            <input type="text"  [(ngModel)]="userName" />
+        </div>
+        </div>
+<div class="row">
+
+        <div class="col-md-2">
+            Password
+        </div>
+
+        <div class="col-md-2">
+            <input type="password"  [(ngModel)]="password" />
+        </div>
+    </div>
+    <div class="row">
+
+    <div class="col-md-2">
+        <!-- Save Credentials<kendo-switch [(ngModel)]="savePwd"></kendo-switch>-->
+        </div>
+        <div class="col-md-2">
+            <button (click)="login(loginModel)"><i class="fa-id-badge" style="color:green"></i>Login</button>
+        </div>
+    </div>
+
+</div>

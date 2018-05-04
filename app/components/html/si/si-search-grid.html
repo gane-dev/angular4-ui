@@ -1,0 +1,77 @@
+﻿
+<div>
+
+    <kendo-grid [height]="300"
+                [selectable]="true"
+                [data]="gridView"
+                [pageSize]="state.take"
+                [skip]="state.skip"
+                [sort]="state.sort"
+                [filter]="state.filter"
+                [sortable]="true"
+                [pageable]="true"
+                [filterable]="true"
+                (dataStateChange)="dataStateChange($event)">
+        <kendo-grid-column field="SPEND_AUDIT_ID" title="ID" width="60" [filterable]="false">
+        </kendo-grid-column>
+        
+            <kendo-grid-column field="CUST_ID" title="Customer" width="100">
+                <template kendoGridFilterCellTemplate let-filter let-column="column">
+                    <kendo-grid-string-filter-cell [showOperators]="false"
+                                                   [column]="column"
+                                                   [filter]="filter">
+                    </kendo-grid-string-filter-cell>
+                </template>
+                
+            </kendo-grid-column>
+            <kendo-grid-column field="SUPPLIER_ID" title="Supplier" width="100">
+                <template kendoGridFilterCellTemplate let-filter let-column="column">
+                    <kendo-grid-string-filter-cell [showOperators]="false"
+                                                   [column]="column"
+                                                   [filter]="filter">
+                    </kendo-grid-string-filter-cell>
+                </template>
+            </kendo-grid-column>
+        <kendo-grid-column field="ITEM_CATEGORY" title="Item Category" width="100">
+            <template kendoGridFilterCellTemplate let-filter let-column="column">
+                <kendo-grid-string-filter-cell [showOperators]="false"
+                                               [column]="column"
+                                               [filter]="filter">
+                </kendo-grid-string-filter-cell>
+            </template>
+        </kendo-grid-column>
+               
+        <kendo-grid-column field="SOURCE_ID" title="Source" width="100">
+            <template kendoGridFilterCellTemplate let-filter let-column="column">
+                <kendo-grid-string-filter-cell [showOperators]="false"
+                                               [column]="column"
+                                               [filter]="filter">
+                </kendo-grid-string-filter-cell>
+            </template>
+        </kendo-grid-column>
+        <kendo-grid-column field="SPEND_YEAR" title="Spend Year" width="100" [filterable]="false">
+        </kendo-grid-column>
+        <kendo-grid-column field="SPEND_PERIOD" title="Spend Period"  width="100" [filterable]="false">
+        </kendo-grid-column>
+        <kendo-grid-column field="CP_SPEND" title="CP Spend" width="100" [filterable]="false">
+        </kendo-grid-column>
+        <kendo-grid-column field="SP_SPEND" title="SP Period" width="100" [filterable]="false">
+        </kendo-grid-column>
+        <kendo-grid-column field="TOLERANCE_PCT" title="Tolerance" width="100" [filterable]="false">
+        </kendo-grid-column>
+        
+            <kendo-grid-column>
+                <template kendoGridHeaderTemplate>
+                    Edit
+                </template>
+                <template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                    <button (click)="onEdit(dataItem.SPEND_AUDIT_ID)">Transactions</button>
+                    <button (click)="onIgnore(dataItem.SPEND_AUDIT_ID)">Ignore</button>
+                </template>
+            </kendo-grid-column>
+            
+        </kendo-grid>
+
+</div>
+
+

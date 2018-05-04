@@ -1,0 +1,59 @@
+﻿
+    <div class="container-fluid">
+      
+            <div class="form-group">
+                <cia-ds-search [sourceId]="SOURCE_ID" (sourceIdChange)="SOURCE_ID=$event"></cia-ds-search>
+                <div class="row">
+                    <div class="col-md-2">From Date</div>
+                    <div class="col-md-4">
+                        <kendo-dateinput [format]="'MMMM yyyy'"
+                                         [(ngModel)]="query.fromDate"></kendo-dateinput>
+                    </div>
+                    <div class="col-md-2">To Date</div>
+                    <div class="col-md-4">
+                        <kendo-dateinput [format]="'MMMM yyyy'"
+                                         [(ngModel)]="query.toDate"></kendo-dateinput>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        Batch ID:
+                    </div>
+                    <div class="col-md-4">
+                        <kendo-autocomplete [data]="batchOptions" [(ngModel)]="query.BATCH_ID" [suggest]="true">
+
+                        </kendo-autocomplete>
+                    </div>
+
+
+
+
+
+                    <div class="col-md-2">Publish Status</div>
+                    <div class="col-md-4">
+                        <kendo-dropdownlist [data]="pubStatus"
+                                            [textField]="'text'"
+                                            [valueField]="'value'"
+                                            [(ngModel)]="query.STATUS"
+                                            [valuePrimitive]="true">
+
+                        </kendo-dropdownlist>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <button class="k-button k-primary" (click)="search()">Search</button>
+                        <button class="k-button k-primary" (click)="clear()">Clear</button>
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="col-md-2"></div>
+                    <div class="col-md-2"></div>
+                    <div class="col-md-2"></div>
+
+                </div>
+            </div>
+        </div>
+
+    
+          

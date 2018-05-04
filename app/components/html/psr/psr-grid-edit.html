@@ -1,0 +1,249 @@
+﻿<kendo-dialog *ngIf="active" title="Add / Modify Exception" (onClose)="active=false" >
+    <div class="form-group" style="width:1000px;height:300px">
+         <form  #psrEditForm="ngForm">
+           <div class="row">
+            <div class="col-md-2">
+                Effective Date
+            </div>
+            <div class="col-md-2">
+           
+                <input type="text" class="form-control" [(ngModel)]="dataItem.EFF_DATE" name="EFF_DATE" #EFF_DATE="ngModel" required/>
+                    <div [hidden]="EFF_DATE.valid "
+                         class="alert alert-danger validation">
+                        ***
+                    </div>
+            </div>
+
+            <div class="col-md-2">
+                Status
+            </div>
+            <div class="col-md-2">
+                 <kendo-dropdownlist class="form-control"
+                                   name="STATUS" #STATUS="ngModel" required
+                                    [data]="statusOptions"
+                                    [textField]="'text'"
+                                    [valueField]="'value'"
+                                    [ngModel]="dataItem.STATUS"
+                                     [valuePrimitive]="true"
+                                     (valueChange)="hStatusOption($event)">
+
+                </kendo-dropdownlist>
+               <!-- <kendo-dropdownlist [data]="statusOptions"
+                                    [textField]="'text'"
+                                    [valueField]="'value'"
+                                    [(ngModel)]="dataItem.STATUS"
+                                    [valuePrimitive]="true"  class="form-control" name="STATUS" #STATUS="ngModel" required> 
+
+                </kendo-dropdownlist>-->
+                <div [hidden]="STATUS.valid "
+                         class="alert alert-danger validation">
+                         *
+                </div>
+            </div>
+            <div class="col-md-2">
+                Rule Status
+            </div>
+            <div class="col-md-2">
+                    <kendo-dropdownlist 
+                                   name="RULE_STATUS"  #RULE_STATUS="ngModel" required
+                                    [data]="ruleStatusOptions"
+                                    [textField]="'text'"
+                                    [valueField]="'value'"
+                                    [ngModel]="dataItem.RULE_STATUS"
+                                     [valuePrimitive]="true"
+                                     (valueChange)="hRuleStatus($event)">
+
+                </kendo-dropdownlist>
+             
+                <div [hidden]="RULE_STATUS.valid "
+                         class="alert alert-danger validation">
+                        *
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+           
+            <div class="col-md-2">
+                Rule Source
+            </div>
+            <div class="col-md-2">
+                   <kendo-dropdownlist 
+                                   name="RULE_SOURCE"  #RULE_SOURCE="ngModel" required
+                                    [data]="ruleSourceOptions"
+                                    [textField]="'text'"
+                                    [valueField]="'value'"
+                                    [ngModel]="dataItem.RULE_SOURCE"
+                                     [valuePrimitive]="true"
+                                     (valueChange)="hRuleSource($event)">
+
+                </kendo-dropdownlist>
+            <!--    <kendo-dropdownlist [data]="ruleSourceOptions"
+                                    [textField]="'text'"
+                                    [valueField]="'value'"
+                                    [(ngModel)]="dataItem.RULE_SOURCE"
+                                    [valuePrimitive]="true" name="RULE_SOURCE"  #RULE_SOURCE="ngModel" required>
+
+                </kendo-dropdownlist>-->
+                <div [hidden]="RULE_SOURCE.valid "
+                         class="alert alert-danger validation">
+                         *
+                </div>
+            </div>
+            <div class="col-md-2">
+                Reason Code
+            </div>
+            <div class="col-md-2">
+                 <kendo-dropdownlist 
+                                   name="REASON_CODE"  
+                                    [data]="reasonCodeOptions"
+                                    [textField]="'text'"
+                                    [valueField]="'value'"
+                                    [ngModel]="dataItem.REASON_CODE"
+                                     [valuePrimitive]="true"
+                                     (valueChange)="hReasonCode($event)">
+
+                </kendo-dropdownlist>
+                <!--<kendo-dropdownlist [data]="reasonCodeOptions"
+                                    [textField]="'text'"
+                                    [valueField]="'value'"
+                                    [(ngModel)]="dataItem.REASON_CODE"
+                                    [valuePrimitive]="true" name="REASON_CODE">
+
+                </kendo-dropdownlist>-->
+                 
+            </div>
+            <div class="col-md-2">
+                Reason Description
+            </div>
+            <div class="col-md-2">
+                <input type="text" class="form-control"  name="REASON_DESCRIPTION"/>
+            </div>
+        </div>
+
+       
+       
+        <div class="row">
+
+        <div class="col-md-2">
+            Scope Override
+        </div>
+
+        <div class="col-md-2">
+              <kendo-dropdownlist 
+                                name="PROGRAM_SCOPE_IND"  required #PROGRAM_SCOPE_IND="ngModel"
+                                    [data]="scopeOptions"
+                                    [textField]="'text'"
+                                    [valueField]="'value'"
+                                    [ngModel]="dataItem.PROGRAM_SCOPE_IND"
+                                     [valuePrimitive]="true"
+                                     (valueChange)="hPSInd($event)">
+
+                </kendo-dropdownlist>
+          <!--  <kendo-dropdownlist [data]="scopeOptions"
+                                [textField]="'text'"
+                                [valueField]="'value'"
+                                [(ngModel)]="dataItem.PROGRAM_SCOPE_IND"
+                                [valuePrimitive]="true" name="PROGRAM_SCOPE_IND" name="PROGRAM_SCOPE_IND"  required #PROGRAM_SCOPE_IND="ngModel">
+
+            </kendo-dropdownlist>-->
+             <div [hidden]="PROGRAM_SCOPE_IND.valid "
+                         class="alert alert-danger validation">
+                         *
+            </div>
+        </div>
+        <div class="col-md-2">Opp Override</div>
+        <div class="col-md-2">
+              <kendo-dropdownlist 
+                               name="GBS_OPP_IND"  required #GBS_OPP_IND="ngModel"
+                                    [data]="oppOptions"
+                                    [textField]="'text'"
+                                    [valueField]="'value'"
+                                    [ngModel]="dataItem.GBS_OPP_IND"
+                                     [valuePrimitive]="true"
+                                     (valueChange)="hGOppInd($event)">
+
+                </kendo-dropdownlist>
+        <!--    <kendo-dropdownlist [data]="oppOptions"
+                                [textField]="'text'"
+                                [valueField]="'value'"
+                                [(ngModel)]="dataItem.GBS_OPP_IND"
+                                [valuePrimitive]="true" name="GBS_OPP_IND" name="GBS_OPP_IND"  required #GBS_OPP_IND="ngModel">
+
+            </kendo-dropdownlist>-->
+            <div [hidden]="GBS_OPP_IND.valid "
+                         class="alert alert-danger validation">
+                         *
+            </div>
+        </div>
+        <div class="col-md-2"> Supp Override</div>
+        <div class="col-md-2">
+
+             <kendo-dropdownlist 
+                               name="PROPOSED_SUPP_OVERRIDE_FLG"   #PROPOSED_SUPP_OVERRIDE_FLG="ngModel" required
+                                    [data]="suppOverrideOptions"
+                                    [textField]="'text'"
+                                    [valueField]="'value'"
+                                    [ngModel]="dataItem.PROPOSED_SUPP_OVERRIDE_FLG"
+                                     [valuePrimitive]="true"
+                                     (valueChange)="hPSOverFlag($event)">
+
+                </kendo-dropdownlist>
+          <!--  <kendo-dropdownlist [data]="suppOverrideOptions"
+                                [textField]="'text'"
+                                [valueField]="'value'"
+                                [(ngModel)]="dataItem.PROPOSED_SUPP_OVERRIDE_FLG"
+                                [valuePrimitive]="true" name="PROPOSED_SUPP_OVERRIDE_FLG" name="PROPOSED_SUPP_OVERRIDE_FLG"  #PROPOSED_SUPP_OVERRIDE_FLG="ngModel" required>
+
+            </kendo-dropdownlist>-->
+              <div [hidden]="PROPOSED_SUPP_OVERRIDE_FLG.valid "
+                         class="alert alert-danger validation">
+                        *
+             </div>
+        </div>
+        </div>
+    <div class="row">
+        <div class="col-md-2">Proposed Supplier</div>
+        <div class="col-md-2"><input type="text" class="form-control" [(ngModel)]="dataItem.PROPOSED_SUPPLIER" name="PROPOSED_SUPPLIER" /></div>
+        <div class="col-md-2">
+            Updated By
+        </div>
+        <div class="col-md-2">
+            <input type="text" class="form-control" [(ngModel)]="dataItem.UPDATED_BY" name="UPDATED_BY"  #UPDATED_BY="ngModel" required/>
+             <div [hidden]="UPDATED_BY.valid "
+                         class="alert alert-danger validation">
+                         *
+             </div>
+        </div>
+        <div class="col-md-2">
+            Date Updated
+        </div>
+        <div class="col-md-2">
+            <input type="text" class="form-control" [(ngModel)]="dataItem.DATE_LAST_UPDATED" name="DATE_LAST_UPDATED" #DATE_LAST_UPDATED="ngModel" required/>
+            <div [hidden]="DATE_LAST_UPDATED.valid "
+                         class="alert alert-danger validation">
+                         *
+             </div>
+        </div>
+    </div>
+
+        <div class="row">
+            <div class="col-md-2">Source Id</div>
+            <div class="col-md-4"><input type="text" class="form-control" [(ngModel)]="dataItem.SOURCE_ID" name="SOURCE_ID" #SOURCE_ID="ngModel" required/></div>
+            <div class="col-md-2">Rule Desc</div>
+            <div class="col-md-4"><input type="text" class="form-control" [(ngModel)]="dataItem.RULE_DESCRIPTION" name="RULE_DESCRIPTION" /></div>
+        </div>
+            <div class="row">
+                <div class="col-md-1">Comments</div>
+                <div class="col-md-11"><input type="text" class="form-control" [(ngModel)]="dataItem.COMMENTS" name="COMMENTS" style="height:80px"/></div>
+
+
+            </div>
+         </form>
+    </div>
+   
+                <kendo-dialog-actions>
+                    <button class="k-button" (click)="onCancel($event)">Cancel</button>
+                    <button class="k-button k-primary" (click)="onSave(dataItem)" [disabled]="!psrEditForm.form.valid">Save</button>
+                </kendo-dialog-actions>
+</kendo-dialog>

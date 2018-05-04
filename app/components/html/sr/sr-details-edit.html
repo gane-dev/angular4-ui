@@ -1,0 +1,93 @@
+﻿<kendo-dialog *ngIf="active" title="Add / Modify Rules" (onClose)="active=false">
+    <div class="form-group">
+
+        <form #srDetaisForm="ngForm">
+            <div class="row">
+                <div class="col-md-2">
+                    Effective Date
+                </div>
+                <div class="col-md-2">
+                    <input [(ngModel)]="dataItem.EFF_DATE" name="EFF_DATE" #EFF_DATE="ngModel" required  class="form-control" />
+                    
+                    <div [hidden]="EFF_DATE.valid " class="alert alert-danger validation">
+                        *
+                    </div>
+                </div>
+                <div class="col-md-2">Status </div>
+                <div class="col-md-2">
+                     <kendo-dropdownlist 
+                                   name="STATUS" #STATUS="ngModel" required
+                                    [data]="statusOptions"
+                                    [textField]="'text'"
+                                    [valueField]="'value'"
+                                    [ngModel]="dataItem.STATUS"
+                                     [valuePrimitive]="true"
+                                     (valueChange)="hStatusOption($event)">
+
+                </kendo-dropdownlist>
+                 <!--   <kendo-dropdownlist [data]="statusOptions" [textField]="'text'" [valueField]="'value'" [(ngModel)]="dataItem.STATUS" [valuePrimitive]="true"
+                        name="STATUS" #STATUS="ngModel" required>
+                    </kendo-dropdownlist>-->
+                    <div [hidden]="STATUS.valid " class="alert alert-danger validation">
+                        *
+                    </div>
+                </div>
+                <div class="col-md-2">Reason </div>
+                <div class="col-md-2">
+                    <kendo-dropdownlist name="REASON_CODE"
+                                        [data]="reasonOptions"
+                                        [textField]="'text'"
+                                        [valueField]="'value'"
+                                        [value]="dataItem.REASON_CODE"
+                                        [valuePrimitive]="true"
+                                        (valueChange)="hReasonOption($event)">
+                    </kendo-dropdownlist>
+                <!--    <kendo-dropdownlist [data]="reasonOptions" [textField]="'text'" [valueField]="'value'" [(ngModel)]="dataItem.REASON_CODE"
+                        [valuePrimitive]="true" name="REASON_CODE">
+                    </kendo-dropdownlist>-->
+                </div>
+            </div>
+             <div class="row">
+
+
+                <div class="col-md-2"> Ignore?
+                    <!--<input type="checkbox" class="form-control" [(ngModel)]="dataItem.IGNORE_FLG" [checked]="IGNORE_FLG === 'Y'?true:false"
+                     name="IGNORE_FLG"/> -->
+                   <kendo-switch [(ngModel)]="ignoreFlag" [offLabel] ="'N'" [onLabel]="'Y'" (valueChange)="switchFlag($event)" name="IGNORE_FLG"></kendo-switch>
+                   </div>
+                <div class="col-md-2">Tolerance% </div>
+                <div class="col-md-2">
+                    <input type="text" class="form-control" [(ngModel)]="dataItem.TOLERANCE_PCT" name="TOLERANCE_PCT" />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-2">
+                    Comments
+                </div>
+                <div class="col-md-10">
+                    <textarea [(ngModel)]="dataItem.COMMENTS" style="width:100%" name="COMMENTS"></textarea>
+</div>
+</div>
+<div class="row">
+    <div class="col-md-3">Created by </div>
+    <div class="col-md-3"><input type="text" disabled class="form-control" [(ngModel)]="dataItem.CREATED_BY" name="CREATED_BY" /> </div>
+    <div class="col-md-3">Created Date </div>
+    <div class="col-md-3"><input type="text" disabled class="form-control" [(ngModel)]="dataItem.DATE_CREATED" name="DATE_CREATED" /> </div>
+</div>
+<div class="row">
+    <div class="col-md-3">Last Mod By </div>
+    <div class="col-md-3"><input disabled type="text" class="form-control" [(ngModel)]="dataItem.UPDATED_BY" name="UPDATED_BY" /> </div>
+    <div class="col-md-3">Last Mod Date </div>
+    <div class="col-md-3"><input type="text" disabled class="form-control" [(ngModel)]="dataItem.DATE_LAST_UPDATED" name="DATE_LAST_UPDATED" />        </div>
+
+</div>
+</form>
+<kendo-dialog-actions>
+    <button class="k-button" (click)="onCancel($event)">Cancel</button>
+    <button class="k-button k-primary" (click)="onSave(dataItem)" [disabled]="!srDetaisForm.form.valid">Save</button>
+</kendo-dialog-actions>
+
+</div>
+
+</kendo-dialog>

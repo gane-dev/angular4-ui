@@ -1,0 +1,14 @@
+﻿<h3>Opportunities</h3>
+<div>
+    <cia-opp-header [(oppHeader)]="oppHeader"></cia-opp-header>
+</div>
+
+<div>
+    <cia-opp-details [oppDetails] ="oppDetails | async"></cia-opp-details>
+</div>
+<div class="row">
+    
+    <div class="col-md-2">
+        <button class="k-button k-primary" id="back" (click)="backToSearch()">Back</button>
+    </div>
+</div>

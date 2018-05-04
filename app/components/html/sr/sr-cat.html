@@ -1,0 +1,18 @@
+﻿<kendo-grid [data]="gridView" style="height:300px" [sortable]="{ mode: 'multiple' }" [sort]="sort"
+            (sortChange)="sortChange($event)">
+    <kendo-grid-column field="CATEGORY" title="Category"></kendo-grid-column>
+    <kendo-grid-column field="CATEGORY" title="Description"></kendo-grid-column>
+
+
+    <kendo-grid-column>
+        <template kendoHeaderTemplate>
+            <button (click)="onAdd()"><i class="fa fa-plus"></i></button>
+
+        </template>
+        <template kendoCellTemplate let-dataItem>
+            <button (click)="onEdit(dataItem)"><i class="fa fa-edit" style="color:green"></i></button>
+            <button (click)="onDelete(dataItem)"><i class="fa fa-ban" style="color:red"></i></button>
+        </template>
+    </kendo-grid-column>
+</kendo-grid>
+<cia-sr-cat-edit [(model)]="dataItem" (cancel)="onCancel($event)" ></cia-sr-cat-edit>

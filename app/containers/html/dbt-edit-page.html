@@ -1,0 +1,198 @@
+﻿<h3>Include / Exclude Transactions - Batch# {{batchId}}</h3>
+<div class="container-fluid">
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-2">
+                Customer Name:
+            </div>
+            <div class="col-md-4">
+                <input type="text" class="form-control" [(ngModel)]="cpCustName" />
+                
+            </div>
+            <div class="col-md-2">
+                Supplier Name:
+            </div>
+            <div class="col-md-4">
+                <input type="text" class="form-control" [(ngModel)]="cpSuppName" />
+
+            </div>
+        </div>
+      
+        <div class="row">
+            <div class="col-md-2">
+                Spend <kendo-switch [(ngModel)]="ascending"
+                              [onLabel]="'Asc'"
+                              [offLabel]="'Desc'"></kendo-switch>
+             </div>
+                <div class="col-md-2">
+                    <button class="k-button k-primary" (click)="search()">Search</button>
+
+                    <button class="k-button k-primary" (click)="clear()">Clear</button>
+                </div>
+
+
+            </div>
+    </div>
+</div>
+<div class="row" *ngIf="showNext">
+    <div class="col-md-8">
+        We cannot handle {{recordCount }} records, use prev, next button to get records in set of {{batchSize  }} ({{currentSet | async}} of {{totalSet}})
+    </div>
+    <div class="col-md-4">
+        <button *ngIf="(currentSet | async) > 1" class="k-button k-primary" (click)="getPrev()">Prev</button>
+        <button *ngIf="(currentSet | async) < totalSet" class="k-button k-primary" id="back" (click)="getNext()">Next</button>
+    </div>
+
+
+</div>
+<div>
+    <kendo-grid [data]="gridData"
+                [pageSize]="state.take"
+                [skip]="state.skip"
+                [sort]="state.sort"
+                [filter]="state.filter"
+                [sortable]="true"
+                [pageable]="true"
+                [filterable]="true"
+                [selectable]="selectableSettings" 
+                [height]="600"
+                [resizable]="true"
+                 [kendoGridSelectBy]="'AV_TRANSACTION_ID'"
+            [selectedKeys]="mySelection"
+                (dataStateChange)="dataStateChange($event)">
+        <kendo-grid-checkbox-column width="50" showSelectAll="true"></kendo-grid-checkbox-column>
+        <kendo-grid-column width="100" field="PUBLISH_INC_EXC_IND" 
+                                                    title="Flag">
+
+            <!--<ng-template kendoGridCellTemplate let-dataItem>
+                <input type="checkbox" [checked]="dataItem.PUBLISH_INC_EXC_IND === 'E'?true:false" (click)="excludeTransaction(dataItem)" />
+
+            </ng-template>-->
+            <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                <kendo-grid-string-filter-cell [showOperators]="false"
+                                               [column]="column"
+                                                [filter]="filter">
+                </kendo-grid-string-filter-cell>
+            </ng-template>
+        </kendo-grid-column>
+       
+        <kendo-grid-column field="CP_CUST_NAME" width="150"  title="CP Customer">
+
+            <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                <kendo-grid-string-filter-cell [showOperators]="false"
+                                               [column]="column"
+                                               [filter]="filter">
+                </kendo-grid-string-filter-cell>
+            </ng-template>
+        </kendo-grid-column>
+        <kendo-grid-column field="CP_SUPP_NAME" width="150"  title="CP Supplier">
+
+            <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                <kendo-grid-string-filter-cell [showOperators]="false"
+                                               [column]="column"
+                                               [filter]="filter">
+                </kendo-grid-string-filter-cell>
+            </ng-template>
+        </kendo-grid-column>
+        <kendo-grid-column field="CUST_NAME" width="150"  title="Customer">
+
+            <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                <kendo-grid-string-filter-cell [showOperators]="false"
+                                               [column]="column"
+                                               [filter]="filter">
+                </kendo-grid-string-filter-cell>
+            </ng-template>
+        </kendo-grid-column>
+        <kendo-grid-column field="SUPPLIER_NAME" width="150"  title="Supplier">
+
+            <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                <kendo-grid-string-filter-cell [showOperators]="false"
+                                               [column]="column"
+                                               [filter]="filter">
+                </kendo-grid-string-filter-cell>
+
+            </ng-template>
+        </kendo-grid-column>
+        <kendo-grid-column field="SUPPLIER_ROLE" width="180" title="Role">
+
+            <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                <kendo-grid-string-filter-cell [showOperators]="false"
+                                               [column]="column"
+                                               [filter]="filter">
+                </kendo-grid-string-filter-cell>
+
+            </ng-template>
+
+        </kendo-grid-column>
+        <kendo-grid-column field="MARKET_PROGRAM_ID_GL" width="180" title="Program">
+
+            <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                <kendo-grid-string-filter-cell [showOperators]="false"
+                                               [column]="column"
+                                               [filter]="filter">
+                </kendo-grid-string-filter-cell>
+
+            </ng-template>
+
+        </kendo-grid-column>
+
+        <kendo-grid-column field="AV_TRANSACTION_ID" width="100" [filterable]="false" title="Transaction">
+
+        </kendo-grid-column>
+
+        <kendo-grid-column field="CP_TRANS_DATE" width="80" [filterable]="false" title="Date">
+
+
+        </kendo-grid-column>
+        <kendo-grid-column field="SPEND" width="80" [filterable]="false" title="Spend">
+
+            <ng-template kendoGridCellTemplate let-dataItem>
+                <p>{{dataItem.SPEND | currency:'USD':true:'1.0-0'}}</p>
+
+            </ng-template>
+        </kendo-grid-column>
+        <kendo-grid-column field="SPEND_IN_SCOPE" width="80" [filterable]="false" title="In-Scope">
+
+            <ng-template kendoGridCellTemplate let-dataItem>
+                <p>{{dataItem.SPEND_IN_SCOPE | currency:'USD':true:'1.0-0'}}</p>
+
+            </ng-template>
+        </kendo-grid-column>
+        <kendo-grid-column field="SPEND_OUT_SCOPE" width="80" [filterable]="false" title="Out-of-Scope">
+
+            <ng-template kendoGridCellTemplate let-dataItem>
+                <p>{{dataItem.SPEND_OUT_SCOPE | currency:'USD':true:'1.0-0'}}</p>
+
+            </ng-template>
+        </kendo-grid-column>
+
+        <kendo-grid-column field="GOOD_SPEND_AMT" width="80" [filterable]="false" title="Good Spend">
+
+            <ng-template kendoGridCellTemplate let-dataItem>
+                <p>{{dataItem.GOOD_SPEND_AMT | currency:'USD':true:'1.0-0'}}</p>
+
+            </ng-template>
+        </kendo-grid-column>
+
+        <kendo-grid-column field="BAD_SPEND_AMT" width="80" [filterable]="false" title="Bad Spend">
+
+            <ng-template kendoGridCellTemplate let-dataItem>
+                <p>{{dataItem.BAD_SPEND_AMT | currency:'USD':true:'1.0-0'}}</p>
+
+            </ng-template>
+        </kendo-grid-column>
+
+
+
+    </kendo-grid>
+</div>
+<div class="row">
+
+    <div class="col-md-4">
+        <button class="k-button k-primary" (click)="applyFlag()">Exclude</button>
+        <button class="k-button k-primary" id="back" (click)="backToSearch()">Back</button>
+    </div>
+
+
+</div>
+

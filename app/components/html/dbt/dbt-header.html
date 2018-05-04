@@ -1,0 +1,61 @@
+﻿
+<div class="container-fluid">
+    <div class="form-group">
+
+
+        <div class="row">
+            <div class="col-md-2">
+                Source ID:
+            </div>
+            <div class="col-md-2">
+                <input type="text" class="form-control" [(ngModel)]="dataBatchHeader.SOURCE_ID" />
+            </div>
+            <div class="col-md-2">
+                Source Name:
+            </div>
+            <div class="col-md-2">
+                <input type="text" class="form-control" [(ngModel)]="dataBatchHeader.SOURCE_ID" />
+            </div>
+
+            <div class="col-md-2">Load Year</div>
+            <div class="col-md-2"><input type="text" class="form-control" [(ngModel)]="dataBatchHeader.LOAD_YEAR" /></div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-2">Publish</div>
+            <div class="col-md-2">
+                  <kendo-dropdownlist 
+                                   name="publishOption" 
+                                    [data]="publishOptions"
+                                    [textField]="'text'"
+                                    [valueField]="'value'"
+                                    [value]="dataBatchHeader.PUBLISH_STATUS"
+                                     [valuePrimitive]="true"
+                                     (valueChange)="hPubStatus($event)">
+
+                </kendo-dropdownlist>
+              <!--  <kendo-dropdownlist [data]="publishOptions"
+                                    [textField]="'text'"
+                                    [valueField]="'value'"
+                                     [(ngModel)]="dataBatchHeader.PUBLISH_STATUS"
+                                    [valuePrimitive]="true">
+
+                </kendo-dropdownlist>-->
+            </div>
+            <div class="col-md-2">
+                Batch ID:
+            </div>
+            <div class="col-md-2">
+                <input type="text" class="form-control" [(ngModel)]="dataBatchHeader.BATCH_ID" />
+            </div>
+            <div class="col-md-2">
+                Load Period:
+            </div>
+            <div class="col-md-2">
+                <input type="text" class="form-control" [(ngModel)]="dataBatchHeader.LOAD_PERIOD" />
+            </div>
+
+        </div>
+    </div>
+
+</div>

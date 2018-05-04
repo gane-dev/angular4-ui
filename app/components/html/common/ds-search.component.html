@@ -1,0 +1,22 @@
+﻿<div class="row">
+    <div class="col-md-2">
+        Source ID:
+    </div>
+    <div class="col-md-4">
+        <kendo-autocomplete #dsId [data]="dsData" [value]="sourceId" [valueField]="'SOURCE_ID'" (valueChange)="selectDsId($event)" [filterable]="true">
+            <template kendoAutoCompleteItemTemplate let-query>
+                <span style="color: #00F;">{{query.SOURCE_ID + " ["+query.SOURCE_DATA_TYPE+"] " + query.SOURCE_NAME}}</span>
+            </template>
+        </kendo-autocomplete>
+    </div>
+    <div class="col-md-2">
+        Source Name:
+    </div>
+    <div class="col-md-4">
+        <kendo-autocomplete #dsName [data]="dsData" [value]="sourceName" [valueField]="'SOURCE_NAME'" (valueChange)="selectDsName($event)" [filterable]="true">
+            <template kendoAutoCompleteItemTemplate let-query>
+                <span style="color: #00F;">{{query.SOURCE_ID + " ["+query.SOURCE_DATA_TYPE+"] " + query.SOURCE_NAME}}</span>
+            </template>
+        </kendo-autocomplete>
+    </div>
+</div>

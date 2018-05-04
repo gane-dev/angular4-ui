@@ -1,0 +1,55 @@
+﻿<kendo-dialog *ngIf="active" title="Add / Modify Incident" (onClose)="active=false">
+    <form [formGroup]="editForm">
+        <table>
+            <tr>
+
+                <td>Trans ID</td>
+
+                <td>
+                    <input type="text" class="form-control" formControlName="TRANSACTION_ID" />
+                </td>
+                <td>Trans Date</td>
+                <td>
+                    <input type="text" class="form-control" formControlName="TRANSACTION_DATE" />
+                </td>
+                <td>CP Spend</td>
+                <td>
+                    <input type="text" class="form-control" formControlName="CP_SPEND" />
+
+                </td>
+                <td>SP Spend</td>
+                <td>
+
+                    <input type="text" class="form-control" formControlName="SP_SPEND" />
+                </td>
+                <td>variance %</td>
+                <td>
+
+                    <input type="text" class="form-control" formControlName="SP_SPEND" />
+                </td>
+                <td>Rule ID</td>
+                <td>
+
+                    <input type="text" class="form-control" formControlName="RULE_ID" />
+                </td>
+                <td>Ignore?</td>
+                <td>
+
+                    <input type="checkbox" [ngModel]="query.IGNORE_FLG == 'Y'" (ngModelChange)="query.IGNORE_FLG=$event?'Y':'N'"> 
+                </td>
+                <td>Tolerance%</td>
+                <td>
+                    <input type="text" class="form-control" formControlName="TOLERANCE_PCT" />
+                </td>
+
+
+            </tr>
+        </table>
+
+    </form>
+
+    <kendo-dialog-actions>
+        <button class="k-button" (click)="onCancel($event)">Cancel</button>
+        <button class="k-button k-primary" [disabled]="!editForm.valid" (click)="onSave($event)">Save</button>
+    </kendo-dialog-actions>
+</kendo-dialog>

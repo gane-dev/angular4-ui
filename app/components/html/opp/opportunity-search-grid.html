@@ -1,0 +1,81 @@
+﻿
+<div>
+    <kendo-grid [height]="300"
+                [selectable]="true"
+                [data]="gridView"
+                [pageSize]="state.take"
+                [skip]="state.skip"
+                [sort]="state.sort"
+                [filter]="state.filter"
+                [sortable]="true"
+                [pageable]="true"
+                [filterable]="true"
+                (dataStateChange)="dataStateChange($event)">
+        <kendo-grid-column field="CUST_ID" title="Customer" width="60">
+            <template kendoGridFilterCellTemplate let-filter let-column="column">
+                <kendo-grid-string-filter-cell [showOperators]="false"
+                                               [column]="column"
+                                               [filter]="filter">
+                </kendo-grid-string-filter-cell>
+            </template>
+        </kendo-grid-column>
+        <kendo-grid-column field="SUPPLIER_ID" title="Supplier" width="60">
+            <template kendoGridFilterCellTemplate let-filter let-column="column">
+                <kendo-grid-string-filter-cell [showOperators]="false"
+                                               [column]="column"
+                                               [filter]="filter">
+                </kendo-grid-string-filter-cell>
+            </template>
+        </kendo-grid-column>
+        <kendo-grid-column field="SYS_PROPOSED_SUPP_ID" title="Sys Proposed"  width="60">
+            <template kendoGridFilterCellTemplate let-filter let-column="column">
+                <kendo-grid-string-filter-cell [showOperators]="false"
+                                               [column]="column"
+                                               [filter]="filter">
+                </kendo-grid-string-filter-cell>
+            </template>
+        </kendo-grid-column>
+        <kendo-grid-column field="USER_PROPOSED_SUPP_ID" title="User Proposed"  width="60">
+            <template kendoGridFilterCellTemplate let-filter let-column="column">
+                <kendo-grid-string-filter-cell [showOperators]="false"
+                                               [column]="column"
+                                               [filter]="filter">
+                </kendo-grid-string-filter-cell>
+            </template>
+         </kendo-grid-column>
+        <kendo-grid-column field="SPEND_USD" title="Spend"  width="40" [filterable]="false">
+        </kendo-grid-column>
+        <kendo-grid-column field="PRIORITY" title="Priority"  width="30" [filterable]="false">
+        </kendo-grid-column>
+        <kendo-grid-column field="STATUS" title="Status"  width="30">
+            <template kendoGridFilterCellTemplate let-filter let-column="column">
+                <kendo-grid-string-filter-cell [showOperators]="false"
+                                               [column]="column"
+                                               [filter]="filter">
+                </kendo-grid-string-filter-cell>
+            </template>
+        </kendo-grid-column>
+        <kendo-grid-column field="BATCH_ID" title="Batch ID"  width="30"  [filterable]="false">
+            <template kendoGridFilterCellTemplate let-filter let-column="column">
+                <kendo-grid-string-filter-cell [showOperators]="false"
+                                               [column]="column"
+                                               [filter]="filter">
+                </kendo-grid-string-filter-cell>
+            </template>
+        </kendo-grid-column>
+        <kendo-grid-column width="30"  [filterable]="false">
+            <template kendoGridHeaderTemplate>
+                View
+            </template>
+            <template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                <button (click)="onEdit(dataItem.CUST_ID,dataItem.SUPPLIER_ID)">View</button>
+
+            </template>
+        </kendo-grid-column>
+      
+      
+    </kendo-grid>
+  
+</div>
+
+

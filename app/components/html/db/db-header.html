@@ -1,0 +1,78 @@
+﻿<!--<kendo-dialog *ngIf="active" title="Review" (onClose)="active=false">-->
+    <div class="form-group">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-2">
+                    Batch ID:<input type="text" class="k-input" [ngModel]="dataBatch.BATCH_ID" readonly />
+                </div>
+                <div class="col-md-2">
+                    Source ID:<input type="text" class="k-input" [ngModel]="dataBatch.SOURCE_ID" readonly />
+                </div>
+
+                <div class="col-md-2">Load Year:<input type="text" class="k-input" [ngModel]="dataBatch.LOAD_YEAR" readonly /></div>
+                <div class="col-md-2">Load Period:<input type="text" class="k-input" [ngModel]="dataBatch.LOAD_PERIOD" readonly /></div>
+                <div class="col-md-2">Publish Status:<input type="text" class="k-input" [ngModel]="dataBatch.PUBLISH_STATUS" readonly /></div>
+                <div class="col-md-2">
+                    Publich Action:<input type="text" class="k-input" [ngModel]="dataBatch.PUBLISH_ACTION" readonly />
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-2">
+                    QA Review Status
+                </div>
+                <div class="col-md-2">
+
+                    <kendo-dropdownlist name="qaOption"
+                                        [data]="qaOptions"
+                                        [textField]="'text'"
+                                        [valueField]="'value'"
+                                        [value]="dataBatch.QA_REVIEW_STATUS"
+                                        [valuePrimitive]="true"
+                                        (valueChange)="hQAReview($event)">
+
+                    </kendo-dropdownlist>
+
+                </div>
+                <div class="col-md-2">QA Pass Status:</div>
+                <div class="col-md-2">
+
+
+                    <kendo-dropdownlist name="qaPassOption"
+                                        [data]="qaPassOptions"
+                                        [textField]="'text'"
+                                        [valueField]="'value'"
+                                        [value]="dataBatch.QA_PASS_STATUS"
+                                        [valuePrimitive]="true"
+                                        (valueChange)="hQAPass($event)">
+
+                    </kendo-dropdownlist>
+
+                </div>
+
+                <div class="col-md-2">QA Review Action:</div>
+                <div class="col-md-2"><input type="text" class="form-control" [(ngModel)]="dataBatch.QA_REVIEW_ACTION_CODE" /></div>
+
+            </div>
+            <div class="row">
+
+                <div class="col-md-2">QA Review Action Description:</div>
+                <div class="col-md-2"><input type="text" class="form-control" [(ngModel)]="dataBatch.QA_REVIEW_ACTION_DESCR" /></div>
+                <div class="col-md-2">QA Passed by:</div>
+                <div class="col-md-2"><input type="text" class="form-control" [(ngModel)]="dataBatch.QA_PASSED_BY" /></div>
+                <div class="col-md-2">Last Reviewed By:</div>
+                <div class="col-md-2"><input type="text" class="form-control" [(ngModel)]="dataBatch.LAST_REVIEWED_BY" /></div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-2">
+                    <button class="k-button k-primary" (click)="back()">Back</button>
+                    <button class="k-button k-primary" (click)="onSave(dataBatch)">Save</button>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+  <!--  </kendo-dialog>-->

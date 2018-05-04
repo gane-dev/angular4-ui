@@ -1,0 +1,33 @@
+﻿<kendo-grid [height]="300"
+            [selectable]="true"
+            [data]="gridView"
+            [pageSize]="state.take"
+            [skip]="state.skip"
+            [sort]="state.sort"
+            [filter]="state.filter"
+            [sortable]="true"
+            [pageable]="true"
+            [filterable]="true"
+            (dataStateChange)="dataStateChange($event)">
+    <kendo-grid-column field="SPEND_YEAR" title="Year" [filterable]="false"></kendo-grid-column>
+    <kendo-grid-column field="SPEND_PERIOD" title="Period" [filterable]="false"></kendo-grid-column>
+
+    <kendo-grid-column field="TRANSACTION_ID" title="Trans ID">
+        <template kendoGridFilterCellTemplate let-filter let-column="column">
+            <kendo-grid-string-filter-cell [showOperators]="false"
+                                           [column]="column"
+                                           [filter]="filter">
+            </kendo-grid-string-filter-cell>
+        </template>
+    </kendo-grid-column>
+
+    <kendo-grid-column field="TRANSACTION_DATE" title="Trans Date">
+        <template kendoGridFilterCellTemplate let-filter let-column="column">
+            <kendo-grid-string-filter-cell [showOperators]="false"
+                                           [column]="column"
+                                           [filter]="filter">
+            </kendo-grid-string-filter-cell>
+        </template>
+    </kendo-grid-column>
+    <kendo-grid-column field="SPEND_USD" title="Spend" [filterable]="false"></kendo-grid-column>
+</kendo-grid>

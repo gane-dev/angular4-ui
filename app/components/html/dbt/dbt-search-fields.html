@@ -1,0 +1,105 @@
+﻿<div class="container-fluid">
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-2">
+                Source ID:
+            </div>
+            <div class="col-md-2">
+
+                <kendo-autocomplete [data]="srcOptions" [valueField]="'SOURCE_ID'" (valueChange)="selectSource($event)" [suggest]="true">
+                    <template kendoAutoCompleteItemTemplate let-dataItem>
+                        <span style="color: #00F;">{{dataItem.SOURCE_ID + " " + dataItem.SOURCE_NAME}}</span>
+            </template>
+</kendo-autocomplete>
+</div>
+<div class="col-md-2">
+    Source Name:
+</div>
+<div class="col-md-2">
+
+    <kendo-autocomplete [data]="srcOptions1" [valueField]="'SOURCE_NAME'" (valueChange)="selectSource1($event)" [suggest]="true">
+        <template kendoAutoCompleteItemTemplate let-dataItem>
+            <span style="color: #00F;">{{dataItem.SOURCE_ID + " " + dataItem.SOURCE_NAME}}</span>
+</template>
+</kendo-autocomplete>
+</div>
+
+<div class="col-md-2">Load Year</div>
+<div class="col-md-2">
+    <input type="text" class="form-control" [(ngModel)]="query.LOAD_YEAR" />
+</div>
+</div>
+<div class="row">
+    <div class="col-md-2">Publish Status</div>
+    <div class="col-md-2">
+          <kendo-dropdownlist 
+                                   name="publishOption" 
+                                    [data]="publishOptions"
+                                    [textField]="'text'"
+                                    [valueField]="'value'"
+                                    [value]="query.PUBLISH_STATUS"
+                                     [valuePrimitive]="true"
+                                     (valueChange)="hPubStatus($event)">
+
+                </kendo-dropdownlist>
+
+    <!--    <kendo-dropdownlist [data]="publishOptions" [textField]="'text'" [valueField]="'value'" [(ngModel)]="query.PUBLISH_STATUS"
+            [valuePrimitive]="true">
+
+        </kendo-dropdownlist>-->
+    </div>
+    <div class="col-md-2">
+        Batch ID:
+    </div>
+    <div class="col-md-2">
+
+        <kendo-autocomplete [data]="batchOptions" (valueChange)="selectBatchId($event)" [suggest]="true">
+
+        </kendo-autocomplete>
+    </div>
+    <div class="col-md-2">
+        Load Period:
+    </div>
+    <div class="col-md-2">
+        <input type="text" class="form-control" [(ngModel)]="query.LOAD_PERIOD" />
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="col-md-2">
+        Date Loaded:
+    </div>
+    <div class="col-md-2">
+        <input type="text" class="form-control" [(ngModel)]="query.DATE_LOADED" />
+    </div>
+    <div class="col-md-2">Transaction Type</div>
+    <div class="col-md-2">
+          <kendo-dropdownlist 
+                                   name="transTypeOption" 
+                                    [data]="transTypeOptions"
+                                    [textField]="'text'"
+                                    [valueField]="'value'"
+                                    [value]="query.TRANS_TYPE"
+                                     [valuePrimitive]="true"
+                                     (valueChange)="hTransType($event)">
+
+                </kendo-dropdownlist>
+     <!--   <kendo-dropdownlist [data]="transTypeOptions" [textField]="'text'" [valueField]="'value'" [(ngModel)]="query.TRANS_TYPE"
+            [valuePrimitive]="true">
+
+        </kendo-dropdownlist>-->
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-2">
+        <button class="k-button k-primary" (click)="search()">Search</button>
+    </div>
+    <div class="col-md-2">
+        <button class="k-button k-primary" (click)="clear()">Clear</button>
+    </div>
+
+
+</div>
+</div>
+</div>

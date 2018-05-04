@@ -1,0 +1,26 @@
+﻿<kendo-dialog *ngIf="active" title="Add / Modify Category" (onClose)="active=false">
+   
+        <div class="form-group">
+ <form #suppEditForm="ngForm">
+
+            <div class="row">
+                <div class="col-md-4">
+                    SUPPLIER_ID
+                </div>
+                <div class="col-md-8">
+
+                    <input type="text" class="form-control" [(ngModel)]="dataItem.SUPPLIER_ID" name="SUPPLIER_ID" #SUPPLIER_ID="ngModel" required/>
+                    <div [hidden]="SUPPLIER_ID.valid " class="alert alert-danger validation">
+                        *
+                    </div>
+                </div>
+
+            </div>
+ </form>
+        </div>
+    
+    <kendo-dialog-actions>
+        <button class="k-button" (click)="onCancel($event)">Cancel</button>
+        <button class="k-button k-primary"  (click)="onSave(dataItem)" [disabled]="!suppEditForm.form.valid">Save</button>
+    </kendo-dialog-actions>
+</kendo-dialog>

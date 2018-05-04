@@ -1,0 +1,51 @@
+﻿<h3>Spend Incident Transactions</h3>
+   <kendo-grid [data]="gridView"
+            [pageSize]="state.take"
+            [skip]="state.skip"
+            [sort]="state.sort"
+            [filter]="state.filter"
+            [sortable]="true"
+            [pageable]="true"
+            [filterable]="true"
+            [selectable]="true"
+            (dataStateChange)="dataStateChange($event)">
+       <kendo-grid-column width="30" title="Ignore" [filterable]="false">
+          
+           <template kendoGridCellTemplate let-dataItem>
+               <input type="checkbox" [checked]="dataItem.IGNORE_FLG === 'E'?true:false" (click)="ignoreTransaction(dataItem)" />
+
+           </template>
+       </kendo-grid-column>
+    <kendo-grid-column field="TRANSACTION_ID" title="Trans ID" width="60">
+        <template kendoGridFilterCellTemplate let-filter let-column="column">
+            <kendo-grid-string-filter-cell [showOperators]="false"
+                                           [column]="column"
+                                           [filter]="filter">
+            </kendo-grid-string-filter-cell>
+        </template>
+    </kendo-grid-column>
+    <kendo-grid-column field="TRANSACTION_DATE" title="Trans Date" width="60">
+        <template kendoGridFilterCellTemplate let-filter let-column="column">
+            <kendo-grid-string-filter-cell [showOperators]="false"
+                                           [column]="column"
+                                           [filter]="filter">
+            </kendo-grid-string-filter-cell>
+        </template>
+    </kendo-grid-column>
+       <kendo-grid-column field="CP_SPEND" title="CP Spend" width="40" [filterable]="false"></kendo-grid-column>
+       <kendo-grid-column field="SP_SPEND" title="SP Spend" width="40" [filterable]="false"></kendo-grid-column>
+       <kendo-grid-column field="CP_SPEND_USD" title="CP Spend(USD)" width="40" [filterable]="false"></kendo-grid-column>
+       <kendo-grid-column field="SP_SPEND_USD" title="SP Spend(USD)" width="40" [filterable]="false"></kendo-grid-column>
+       <kendo-grid-column field="PCT_VARIANCE" title="% Variance" width="40" [filterable]="false"></kendo-grid-column>
+       <kendo-grid-column field="PCT_VARIANCE_USD" title="% Variance(USD)" width="40" [filterable]="false"></kendo-grid-column>
+       <kendo-grid-column field="VARIANCE" title="Variance" width="40" [filterable]="false"></kendo-grid-column>
+       <kendo-grid-column field="VARIANCE_USD" title="Variance(USD)" width="40" [filterable]="false"></kendo-grid-column>
+   
+</kendo-grid>
+<div class="row">
+    <div class="col-md-4">
+        <button class="k-button k-primary" (click)="onIgnore()">Ignore</button>
+        <button class="k-button k-primary" id="back" (click)="backToSearch()">Back</button>
+    </div>
+
+</div>

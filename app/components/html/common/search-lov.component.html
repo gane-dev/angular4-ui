@@ -1,0 +1,13 @@
+﻿   <div class="example-wrapper">
+    <kendo-dropdownlist 
+                        #searchValue
+                        [data]="listItems"
+                        [textField]="'text'"
+                        [valueField]="'value'"
+                        [value]="selectedValue"
+                        [valuePrimitive]="true">
+        <ng-template kendoDropDownListItemTemplate let-dataItem>
+            <span class="template">{{ dataItem.value }}</span> {{ dataItem.text }}
+        </ng-template>
+    </kendo-dropdownlist>
+</div>

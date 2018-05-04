@@ -1,0 +1,68 @@
+﻿<div class="form-group">
+    <div class="container-fluid">
+        <!--<cia-customer-search [customerId] ="CUST_ID" (customerIdChange)="CUST_ID=$event"></cia-customer-search>
+        <cia-supplier-search [supplierId]="SUPPLIER_ID" (supplierIdChange)="SUPPLIER_ID=$event"></cia-supplier-search>-->
+        <div class="row">
+            <div class="col-md-1">
+                Customer Name:
+            </div>
+            <div class="col-md-3">
+                <input type="text" class="form-control" [(ngModel)]="cpCustName" />
+
+            </div>
+            <div class="col-md-1">
+                Supplier Name:
+            </div>
+            <div class="col-md-3">
+                <input type="text" class="form-control" [(ngModel)]="cpSuppName" />
+
+            </div>
+            <div class="col-md-1">
+                Parent Name:
+            </div>
+            <div class="col-md-3">
+                <input type="text" class="form-control" [(ngModel)]="cpParentName" />
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-1">
+                Brand:
+            </div>
+            <div class="col-md-3">
+                <input type="text" class="form-control" [(ngModel)]="cpBrandName" />
+
+            </div>
+            <div class="col-md-1">
+                 Market Segment:
+            </div>
+            <div class="col-md-3">
+                <input type="text" class="form-control" [(ngModel)]="cpMarketSegment" />
+
+            </div>
+            <div class="col-md-1">
+                Source:
+            </div>
+            <div class="col-md-3">
+                <input type="text" class="form-control" [(ngModel)]="cpSource" />
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <button class="k-button k-primary" (click)="search()">Search</button>
+                <button class="k-button k-primary" (click)="clear()">Clear</button>
+            </div>
+            <div class="col-md-2">
+
+            </div>
+
+            <div class="col-md-2"></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-2"></div>
+        </div>
+
+
+
+    </div>
+</div>

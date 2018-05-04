@@ -1,0 +1,91 @@
+﻿    <div>
+
+    <div style="width:50%;float:left">
+        <kendo-grid [height]="300"
+                    [selectable]="true"
+                    [data]="gridView"
+                    [pageSize]="state.take"
+                    [skip]="state.skip"
+                    [sort]="state.sort"
+                    [filter]="state.filter"
+                    [sortable]="true"
+                    [pageable]="true"
+                    [filterable]="true"
+                    (dataStateChange)="dataStateChange($event)">
+            <kendo-grid-column field="EFF_DATE" title="Effective">
+                <template kendoGridFilterCellTemplate let-filter let-column="column">
+                    <kendo-grid-string-filter-cell [showOperators]="false"
+                                                   [column]="column"
+                                                   [filter]="filter">
+                    </kendo-grid-string-filter-cell>
+                </template>
+            </kendo-grid-column>
+            <kendo-grid-column field="CUST_ID" title="Customer ID">
+                <template kendoGridFilterCellTemplate let-filter let-column="column">
+                    <kendo-grid-string-filter-cell [showOperators]="false"
+                                                   [column]="column"
+                                                   [filter]="filter">
+                    </kendo-grid-string-filter-cell>
+                </template>
+            </kendo-grid-column>
+            <kendo-grid-column field="CUST_NAME" title="Name">
+                <template kendoGridFilterCellTemplate let-filter let-column="column">
+                    <kendo-grid-string-filter-cell [showOperators]="false"
+                                                   [column]="column"
+                                                   [filter]="filter">
+                    </kendo-grid-string-filter-cell>
+                </template>
+            </kendo-grid-column>
+            <kendo-grid-column field="CUST_TYPE" title="Type">
+                <template kendoGridFilterCellTemplate let-filter let-column="column">
+                    <kendo-grid-string-filter-cell [showOperators]="false"
+                                                   [column]="column"
+                                                   [filter]="filter">
+                    </kendo-grid-string-filter-cell>
+                </template>
+            </kendo-grid-column>
+            <kendo-grid-column>
+                <template kendoGridHeaderTemplate>
+                    <button (click)="onAdd()">Add</button>
+                </template>
+                <template kendoGridCellTemplate let-dataItem>
+                    <button (click)="onEdit(dataItem)">Edit</button>
+                    <button (click)="onDelete(dataItem)">Delete</button>
+                </template>
+            </kendo-grid-column>
+        </kendo-grid>
+    </div>
+    <div style="width:50%;float:right" *ngIf="optionAdd">
+        <cia-customer-search [customerId]="CUST_ID" (customerIdChange)="CUST_ID=$event"></cia-customer-search>
+  
+            <div class="row">
+                <div class="col-md-2">
+                    Effective Date
+                </div>
+                <div class="col-md-4">
+                    <kendo-dateinput [format]="'MM/dd/yyyy'"
+                                     [(ngModel)]="effDate" disabled></kendo-dateinput>
+                </div>
+                <div class="col-md-2">
+                    Customer Type
+                </div>
+                <div class="col-md-4">
+                    <kendo-dropdownlist name="CUST_TYPE"
+                                        [data]="typeOptions"
+                                        [textField]="'text'"
+                                        [valueField]="'value'"
+                                        [value]="custType"
+                                        [valuePrimitive]="true"
+                                        (valueChange)="hCustOption($event)">
+                    </kendo-dropdownlist>
+                </div>
+            </div>
+        <div class="row">
+            <div class="col-md-4">
+                <button class="k-button k-primary" (click)="save()" >Save</button>
+                <button class="k-button k-primary" (click)="cancel()">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,38 @@
+﻿
+    <div class="container-fluid">
+    <div class="form-group">
+
+        <cia-customer-search [customerId]="CUST_ID" (customerIdChange)="CUST_ID=$event"></cia-customer-search>
+        <cia-supplier-search [supplierId]="SUPPLIER_ID" (supplierIdChange)="SUPPLIER_ID=$event"></cia-supplier-search>
+        <cia-category-search [catId]="CATEGORY" (catIdChange)="CATEGORY=$event"></cia-category-search>
+        <div class="row">
+            <div class="col-md-2">Rule Level</div>
+            <div class="col-md-4">
+                <kendo-dropdownlist name="rlItem"
+                                    [data]="rlItems"
+                                    [textField]="'text'"
+                                    [valueField]="'value'"
+                                    [value]="query.RULE_LEVEL"
+                                    [valuePrimitive]="true"
+                                    (valueChange)="hRlItme($event)">
+                </kendo-dropdownlist>
+
+
+            </div>
+
+        </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <button class="k-button k-primary" (click)="search()">Search</button>
+                    <button class="k-button k-primary" (click)="clear()">Clear</button>
+                </div>
+
+                <div class="col-md-2"></div>
+                <div class="col-md-2"></div>
+                <div class="col-md-2"></div>
+                <div class="col-md-2"></div>
+            </div>
+        </div>
+    </div>
+

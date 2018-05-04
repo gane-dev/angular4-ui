@@ -1,0 +1,122 @@
+﻿
+        <div>
+            <kendo-grid  [selectable]="true"  
+                [data]="gridData"
+                [pageSize]="state.take"
+                [skip]="state.skip"
+                [sort]="state.sort"
+                [filter]="state.filter"
+                [sortable]="true"
+                [pageable]="true"
+                [filterable]="true"
+                (dataStateChange)="dataStateChange($event)">
+                   
+                    <!--<kendo-grid-column field="CUST_ID" title="Customer" width="100" >
+                         <ng-template  kendoGridFilterCellTemplate let-filter let-column="column" >
+                            <kendo-grid-string-filter-cell [showOperators]="false"
+                                                           [column]="column"
+                                                           [filter]="filter">
+                            </kendo-grid-string-filter-cell>
+                        </ng-template>
+                    </kendo-grid-column>-->
+                <kendo-grid-column field="CUST_NAME" title="Customer Name" width="150" [locked]="true">
+                     <ng-template  kendoGridFilterCellTemplate let-filter let-column="column">
+                        <kendo-grid-string-filter-cell [showOperators]="false"
+                                                       [column]="column"
+                                                       [filter]="filter">
+                        </kendo-grid-string-filter-cell>
+                    </ng-template>
+                </kendo-grid-column>
+                    <!--<kendo-grid-column field="SUPPLIER_ID" title="Supplier" width="100">
+                         <ng-template  kendoGridFilterCellTemplate let-filter let-column="column">
+                            <kendo-grid-string-filter-cell [showOperators]="false"
+                                                           [column]="column"
+                                                           [filter]="filter">
+                            </kendo-grid-string-filter-cell>
+                        </ng-template>
+                    </kendo-grid-column>-->
+                <kendo-grid-column field="SUPPLIER_NAME" title="Supplier Name" width="150" [locked]="true">
+                     <ng-template  kendoGridFilterCellTemplate let-filter let-column="column">
+                        <kendo-grid-string-filter-cell [showOperators]="false"
+                                                       [column]="column"
+                                                       [filter]="filter">
+                        </kendo-grid-string-filter-cell>
+                    </ng-template>
+                </kendo-grid-column>
+                <kendo-grid-column field="EFF_DATE" title="Effective" width="100" [locked]="true">
+                    <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                        <kendo-grid-string-filter-cell [showOperators]="false"
+                                                       [column]="column"
+                                                       [filter]="filter">
+                        </kendo-grid-string-filter-cell>
+                    </ng-template>
+                </kendo-grid-column>
+                <kendo-grid-column field="CUST_STATE" title="State" [filterable]="false" [locked]="true"  width="50">
+                </kendo-grid-column>
+                <kendo-grid-column field="MARKET_SEGMENT" title="Market Seg" [filterable]="false" [locked]="true"  width="100">
+                </kendo-grid-column>
+                <kendo-grid-column field="ERM_PARENT_ID" title="Parent Id" [filterable]="false" [locked]="true"  width="100">
+                </kendo-grid-column>
+                <kendo-grid-column field="ERM_BRAND_ID" title="Brand Id" [filterable]="false" [locked]="true"  width="100">
+                </kendo-grid-column>
+                <kendo-grid-column field="SOURCE_ID" title="Source Id" [filterable]="false" [locked]="true"  width="100">
+                </kendo-grid-column>
+                <kendo-grid-column width="60" [locked]="true">
+                    <ng-template kendoGridHeaderTemplate>
+                        Open
+                    </ng-template>
+                    <ng-template kendoGridCellTemplate let-dataItem>
+                        <button (click)="onEdit(dataItem)">Open</button>
+                    </ng-template>
+                </kendo-grid-column>
+                    <kendo-grid-column field="RULE_LEVEL" title="Level" [filterable]="false"  width="50">
+                        <ng-template kendoGridCellTemplate let-dataItem>
+                            {{dataItem.RULE_LEVEL | psrRuleLevel}}
+
+                        </ng-template>
+                        
+                    </kendo-grid-column>
+                    <kendo-grid-column field="PROGRAM_SCOPE_IND" title="Scope" [filterable]="false"  width="100">
+                        <ng-template kendoGridCellTemplate let-dataItem>
+                            {{dataItem.PROGRAM_SCOPE_IND | psrScope}}
+
+                        </ng-template>
+                    </kendo-grid-column>
+                    <kendo-grid-column field="GBS_OPP_IND" title="Opportunity" [filterable]="false"  width="100">
+                        <ng-template kendoGridCellTemplate let-dataItem>
+                            {{dataItem.GBS_OPP_IND | psrOpp}}
+
+                        </ng-template>
+                     </kendo-grid-column>
+                    <kendo-grid-column field="PROPOSED_SUPP_OVERRIDE_FLG" title="Override" [filterable]="false"  width="100">
+                       
+                        <ng-template kendoGridCellTemplate let-dataItem>
+                            {{dataItem.PROPOSED_SUPP_OVERRIDE_FLG | psrOverride}}
+
+                        </ng-template>
+                    </kendo-grid-column>
+                    <kendo-grid-column field="PROPOSED_SUPPLIER" title="Proposed" [filterable]="false"  width="100">
+                    </kendo-grid-column>
+
+                   
+
+                    <kendo-grid-column field="RULE_STATUS" title="Status" [filterable]="false"  width="50">
+                        <ng-template kendoGridCellTemplate let-dataItem>
+                            {{dataItem.RULE_STATUS | psrStatus}}
+
+                        </ng-template>
+                         
+                    </kendo-grid-column>
+                    <kendo-grid-column field="RULE_SOURCE" title="Source" [filterable]="false"  width="50">
+                        <ng-template kendoGridCellTemplate let-dataItem>
+                            {{dataItem.RULE_SOURCE | psrSource}}
+
+                        </ng-template>
+
+                    </kendo-grid-column>
+              
+                
+               
+</kendo-grid>
+             
+</div>

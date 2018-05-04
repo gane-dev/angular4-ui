@@ -1,0 +1,42 @@
+﻿
+
+<kendo-grid [data]="gridView" [height]="300" [sortable]="{ mode: 'multiple' }" [sort]="sort"
+            (sortChange)="sortChange($event)" [selectable]="true" (selectionChange) ="selectionChange($event)">
+    <kendo-grid-column field="CP_TRANS_ID_XREF" title="CP Transaction ID Xref">
+    </kendo-grid-column>
+    <kendo-grid-column field="CP_TRANS_DATE" title="CP Transaction Date">
+    </kendo-grid-column>
+    <kendo-grid-column field="CP_CUST_XREF" title="CP Customer Xref">
+    </kendo-grid-column>
+    <kendo-grid-column field="CP_SUPP_XREF" title="CP Supplier Xref">
+    </kendo-grid-column>
+    
+    <kendo-grid-column field="PUBLISH_EXC_REASON_CODE" title="Publish Exclude Reason Code">
+    </kendo-grid-column>
+
+    <kendo-grid-column field="PUBLISH_EXC_REASON_COMMENTS" title="Publish Exclude Reason Comments">
+    </kendo-grid-column>
+
+    <kendo-grid-column field="QA_REVIEW_ACTION_CODE" title="QA Review Action Code">
+    </kendo-grid-column>
+
+    <kendo-grid-column field="QA_REVIEW_ACTION_COMMENTS" title="QA Review Action Comments">
+    </kendo-grid-column>
+
+    <kendo-grid-column field="LAST_REVIEWED_BY" title="Last Reviewed By">
+
+    </kendo-grid-column>
+    <kendo-grid-column field="LAST_REVIEWED_DATE" title="Last Reviewed Date">
+
+    </kendo-grid-column>
+    
+    <kendo-grid-column >
+        <template kendoHeaderTemplate>
+            <input type="checkbox" (click)="excludeAll($event.target.checked)" />
+        </template>
+        <template kendoCellTemplate let-dataItem>
+            <input type="checkbox" [checked]="dataItem.PUBLISH_INC_EXC_IND === 'E'?true:false"  (click)="excludeTransaction(dataItem)"/>
+        
+        </template>
+    </kendo-grid-column>
+</kendo-grid>

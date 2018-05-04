@@ -1,0 +1,61 @@
+<kendo-grid [data]="gridView"   style="height: 600" [sortable]="{ mode: 'multiple' }" [sort]="sort" 
+          (sortChange)="sortChange($event)" [scrollable]="'scrollable'">
+    <kendo-grid-column field="LOAD_YEAR" title="Year" width="70" >
+    </kendo-grid-column>
+    <kendo-grid-column field="LOAD_PERIOD" title="Period" width="70">
+    </kendo-grid-column>
+    <kendo-grid-column field="BATCH_ID" title="Batch" width="70" >
+    </kendo-grid-column>
+    <kendo-grid-column field="AVG_TRANS_PER_DOC" title="Avg.Doc" width="70">
+    </kendo-grid-column>
+    <kendo-grid-column field="AVG_TRANS_PER_SUPP" title="Avg.Supp" width="70">
+    </kendo-grid-column>
+    <kendo-grid-column field="AVG_TRANS_PER_CUST" title="Avg.Cust" width="70">
+    </kendo-grid-column>
+    <kendo-grid-column field="MAX_TRANS_PER_DOC" title="Max Doc" width="70">
+    </kendo-grid-column>
+    <kendo-grid-column field="MAX_TRANS_PER_SUPP" title="Max Supp" width="70">
+    </kendo-grid-column>
+    <kendo-grid-column field="MAX_TRANS_PER_CUST" title="Max Cust" width="70">
+    </kendo-grid-column>
+    
+    <kendo-grid-column field="TRANS_EXCLUDED_COUNT" title="Ex Cnt" width="70">
+    </kendo-grid-column>
+    <kendo-grid-column field="TRANS_EXCLUDED_LINE_COUNT" title="Ex Lines" width="70">
+    </kendo-grid-column>
+    <kendo-grid-column field="TRANS_EXCLUDED_AMT" title="Ex Amt" width="70">
+    </kendo-grid-column>
+    
+    <kendo-grid-column field="SUPP_MTCH_COUNT" title="Supp Match" width="70">
+    </kendo-grid-column>
+    <kendo-grid-column field="SUPP_MTCH_PERCENT" title="% Supp Mtch" width="70">
+    </kendo-grid-column>
+    <kendo-grid-column field="AV_SUPP_COUNT" title="Av Supp Mtch Cnt" width="70">
+    </kendo-grid-column>
+    <kendo-grid-column field="AV_PROSPECT_COUNT" title="Av Pros Mtch Cnt" width="70">
+    </kendo-grid-column>
+    <kendo-grid-column field="AV_SUPP_PERCENT" title="%Av Supp" width="70">
+    </kendo-grid-column>
+    <kendo-grid-column field="AV_PROSPECT_PERCENT" title="%Av Pros" width="70">
+    </kendo-grid-column>
+
+    <kendo-grid-column field="NEW_SUPP_MTCH_COUNT" title="New Supp Mtch Cnt" width="70">
+    </kendo-grid-column>
+    <kendo-grid-column field="CUST_MTCH_COUNT" title="Cust Mtch Cnt" width="70">
+    </kendo-grid-column>
+    <kendo-grid-column field="CUST_MTCH_PERCENT" title="%Cust Mtched" width="70">
+    </kendo-grid-column>
+    <kendo-grid-column field="NEW_CUST_MTCH_COUNT" title="New Cust Mtch Cnt" width="70">
+    </kendo-grid-column>
+    
+    <kendo-grid-column field="CUST_COUNT" title="#CPCust"  width="70">
+    </kendo-grid-column>
+    <kendo-grid-column field="SUPP_COUNT" title="#CPSupp"  width="70">
+    </kendo-grid-column>
+    <kendo-grid-column field="TRANS_COUNT" title="#CPTrans"  width="70">
+    </kendo-grid-column>
+    <kendo-grid-column field="LINE_COUNT" title="#CPLines"  width="70">
+    </kendo-grid-column>
+    <kendo-grid-column field="TRANS_MAX_DATE" title="Max Date" width="70">
+    </kendo-grid-column>
+</kendo-grid>

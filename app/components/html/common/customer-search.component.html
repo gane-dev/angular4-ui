@@ -1,0 +1,26 @@
+﻿
+
+  
+        <div class="row">
+            <div class="col-md-2">
+                <label [for]="'custId'">Customer ID:</label>
+            </div>
+            <div class="col-md-4">
+                <kendo-autocomplete #custId [data]="custData" [value]="customerId" [suggest]="true" [valueField]="'CUST_ID'" (valueChange)="selectCustomerId($event)" [filterable]="true">
+                    <template kendoAutoCompleteItemTemplate let-query>
+                        <span style="color: #00F;">{{query.CUST_ID + " " + query.CUST_NAME}}</span>
+                    </template>
+                </kendo-autocomplete>
+            </div>
+            <div class="col-md-2">
+                <label [for]="'custName'">Customer Name:</label>
+            </div>
+            <div class="col-md-4">
+                <kendo-autocomplete #custName [data]="custData " [value]="customerName" [suggest]="true" [valueField]="'CUST_NAME'" (valueChange)="selectCustomerName($event)" [filterable]="true">
+                    <template kendoAutoCompleteItemTemplate let-query>
+                        <span style="color: #00F;">{{query.CUST_ID + " " + query.CUST_NAME}}</span>
+                    </template>
+                </kendo-autocomplete>
+            </div>
+        </div>
+

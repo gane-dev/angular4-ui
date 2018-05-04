@@ -1,0 +1,51 @@
+﻿<div class="container-fluid">
+    <div class="form-group">
+
+   <form  #srEditForm="ngForm">
+        <div class="row">
+            <div class="col-md-2">
+                Rule Level
+            </div>
+            <div class="col-md-2">
+                 <kendo-dropdownlist 
+                                    name="RULE_LEVEL" #RULE_LEVEL="ngModel" required
+                                    [data]="rlItems"
+                                    [textField]="'text'"
+                                    [valueField]="'value'"
+                                    [value]="spendRuleFields.RULE_LEVEL"
+                                    [ngModel]="spendRuleFields.RULE_LEVEL"
+                                     [valuePrimitive]="true"
+                                     (valueChange)="hRlItme($event)">
+
+                </kendo-dropdownlist>
+              <!--  <kendo-dropdownlist [data]="rlItems"
+                                    [textField]="'text'"
+                                    [valueField]="'value'"
+                                    [(ngModel)]="spendRuleFields.RULE_LEVEL"
+                                    [valuePrimitive]="true" name="RULE_LEVEL" #RULE_LEVEL="ngModel" required>
+                </kendo-dropdownlist>-->
+                  <div [hidden]="RULE_LEVEL.valid "
+                         class="alert alert-danger validation">
+                        *
+                    </div>
+            </div>
+            <div class="col-md-2">Rule Id</div>
+            <div class="col-md-2"><input type="text" class="form-control" [ngModel]="spendRuleFields.RULE_ID" name="RULE_ID" #RULE_ID="ngModel" required (ngModelChange)="ruleIdChange($event)"/></div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">
+                Rule Description
+            </div>
+            <div class="col-md-6">
+                <input style="width:80%" type="text" class="form-control" [ngModel]="spendRuleFields.RULE_DESCRIPTION"  name="RULE_DESCRIPTION" #RULE_DESCRIPTION="ngModel" required (ngModelChange)="descriptionChange($event)"/>
+                  <div [hidden]="RULE_DESCRIPTION.valid "
+                         class="alert alert-danger validation">
+                        *
+                    </div>
+            </div>
+          
+        </div>
+   </form>
+    </div>
+</div>

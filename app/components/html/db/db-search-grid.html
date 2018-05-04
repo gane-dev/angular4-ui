@@ -1,0 +1,105 @@
+﻿<div>
+
+     <kendo-grid 
+                 
+                  [selectable]="true" 
+                [data]="gridView"
+                [pageSize]="state.take"
+                [skip]="state.skip"
+                [sort]="state.sort"
+                [filter]="state.filter"
+                [sortable]="true"
+                [pageable]="true"
+                [filterable]="true"
+                    [height]="550"
+                 [resizable]="true"
+                (dataStateChange)="dataStateChange($event)">
+       
+     
+             <kendo-grid-column field="PUBLISH_STATUS" title="Status" width="60" [filterable]="false">
+                                   
+                   
+                         <ng-template kendoGridCellTemplate let-dataItem>
+                             <i class="{{dataItem.PUBLISH_STATUS | publishStatus}}"></i>
+                             <i class="{{dataItem | publishAction}}"></i>
+                             {{dataItem.PUBLISH_ACTION | publishText}}
+                         </ng-template>
+     
+
+             </kendo-grid-column>
+         <kendo-grid-column field="BATCH_ID" title="Batch ID" width="60" [filterable]="false" >
+     
+         </kendo-grid-column>
+     
+         <kendo-grid-column field="TRANS_MIN_DATE" title="Batch Start" width="60">
+             <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                 <kendo-grid-string-filter-cell [showOperators]="false"
+                                                [column]="column"
+                                                [filter]="filter">
+                 </kendo-grid-string-filter-cell>
+             </ng-template>
+    </kendo-grid-column>
+    <kendo-grid-column field="TRANS_MAX_DATE" title="Batch End" width="60" filter="date" format="{0:dd,1:mm,2:yyyy}">
+        <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+            <kendo-grid-string-filter-cell [showOperators]="false"
+                                           [column]="column"
+                                           [filter]="filter"
+                                          >
+            </kendo-grid-string-filter-cell>
+        </ng-template>
+    </kendo-grid-column>
+
+        <kendo-grid-column field="SPEND_TOTAL" title="Total(USD)" width="60" [filterable]="false">
+            <ng-template kendoGridCellTemplate let-dataItem>
+                <p>{{dataItem.SPEND_TOTAL | currency:'USD':true:'1.0-0'}}</p>
+
+            </ng-template>
+        </kendo-grid-column>
+        <kendo-grid-column field="SPEND_IN_SCOPE" title="In-Scope$" width="60" [filterable]="false">
+            <ng-template kendoGridCellTemplate let-dataItem>
+                <p>{{dataItem.SPEND_IN_SCOPE | currency:'USD':true:'1.0-0'}}</p>
+
+            </ng-template>
+        </kendo-grid-column>
+        <kendo-grid-column field="SPEND_OUT_SCOPE" title="Out-of-Scope$" width="60" [filterable]="false">
+            <ng-template kendoGridCellTemplate let-dataItem>
+                <p>{{dataItem.SPEND_OUT_SCOPE | currency:'USD':true:'1.0-0'}}</p>
+
+            </ng-template>
+        </kendo-grid-column>
+
+        <kendo-grid-column field="GOOD_SPEND_AMT" title="GoodSpend$" width="60" [filterable]="false">
+            <ng-template kendoGridCellTemplate let-dataItem>
+                <p>{{dataItem.GOOD_SPEND_AMT | currency:'USD':true:'1.0-0'}}</p>
+
+            </ng-template>
+        </kendo-grid-column>
+
+        <kendo-grid-column field="BAD_SPEND_AMT" title="BadSpend$" width="60" [filterable]="false">
+            <ng-template kendoGridCellTemplate let-dataItem>
+                <p>{{dataItem.BAD_SPEND_AMT | currency:'USD':true:'1.0-0'}}</p>
+
+            </ng-template>
+       </kendo-grid-column>
+         <kendo-grid-column field="SOURCE_NAME" title="Source" width="60" >
+             <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                 <kendo-grid-string-filter-cell [showOperators]="false" 
+                                                [column]="column"
+                                                [filter]="filter">
+                 </kendo-grid-string-filter-cell>
+             </ng-template>
+         </kendo-grid-column>
+        <kendo-grid-column width="30">
+              <ng-template kendoGridHeaderTemplate>
+                Open
+            </ng-template>
+            <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                <button  (click)="onEdit(dataItem.SOURCE_ID,dataItem.BATCH_ID,dataItem.TRANS_COUNT)">Edit</button>
+                <button *ngIf="(dataItem.PUBLISH_STATUS != 'C' && dataItem.PUBLISH_ACTION != 'P')" (click)="onPublish(dataItem.SOURCE_ID,dataItem.BATCH_ID)">Publish</button>
+                <button *ngIf="(dataItem.PUBLISH_STATUS != 'C'  && dataItem.PUBLISH_ACTION != 'R')" (click)="onReject(dataItem.SOURCE_ID,dataItem.BATCH_ID)">Reject</button>
+                <button *ngIf="(dataItem.PUBLISH_STATUS === 'C' && dataItem.PUBLISH_ACTION != 'U')" (click)="onUnPublish(dataItem.SOURCE_ID,dataItem.BATCH_ID)">UnPublish</button>
+            </ng-template>
+        </kendo-grid-column>
+    </kendo-grid>
+      
+            </div>

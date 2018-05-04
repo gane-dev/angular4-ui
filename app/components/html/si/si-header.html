@@ -1,0 +1,105 @@
+﻿<h3>Spend Incident</h3>
+<div class="form-group">
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-md-2">
+                Audit Id
+            </div>
+            <div class="col-md-2">
+                <input class="k-input" type="text" [ngModel]="siHeader.SPEND_AUDIT_ID" disabled/>
+            </div>
+
+            <div class="col-md-2">
+                Customer Id
+            </div>
+            <div class="col-md-2">
+                <input class="k-input" type="text" [ngModel]="siHeader.CUST_ID" disabled/>
+            </div>
+            <div class="col-md-2">
+                Supplier Id
+            </div>
+            <div class="col-md-2">
+                <input class="k-input" type="text" [ngModel]="siHeader.SUPPLIER_ID" disabled/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                Category
+            </div>
+            <div class="col-md-2">
+                <input class="k-input" type="text" [ngModel]="siHeader.ITEM_CATEGORY" disabled/>
+            </div>
+            <div class="col-md-2">
+                Source ID
+            </div>
+            <div class="col-md-2">
+                <input class="k-input" type="text" [ngModel]="siHeader.SOURCE_ID" disabled/>
+            </div>
+            <div class="col-md-2">
+                Batch Id
+            </div>
+            <div class="col-md-2">
+                <input class="k-input" type="text" [ngModel]="siHeader.BATCH_ID" disabled/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                Spend Year
+            </div>
+            <div class="col-md-2">
+                <input class="k-input" type="text" [ngModel]="siHeader.SPEND_YEAR" disabled/>
+            </div>
+            <div class="col-md-2">
+                Spend Period
+            </div>
+            <div class="col-md-2">
+                <input class="k-input" type="text" [ngModel]="siHeader.SPEND_PERIOD" disabled/>
+            </div>
+            <div class="col-md-2">
+                Tolerance %
+            </div>
+            <div class="col-md-2">
+                <input class="k-input" type="text" [ngModel]="siHeader.TOLERANCE_PCT" disabled/>
+            </div>
+
+        </div>
+        <div class="row">
+                    
+            <div class="col-md-2">
+                Review Status
+            </div>
+
+            <div class="col-md-2">
+                <kendo-dropdownlist name="reviewStatus"
+                                    [data]="statusOptions"
+                                    [textField]="'text'"
+                                    [valueField]="'value'"
+                                    [value]="siHeader.REVIEW_STATUS"
+                                    [valuePrimitive]="true"
+                                    (valueChange)="hReviewStatus($event)">
+
+                </kendo-dropdownlist>
+
+            </div>
+            <div class="col-md-2">
+                Ignore Flag
+            </div>
+
+            <div class="col-md-2">
+                <input type="checkbox" [ngModel]="siHeader.IGNORE_FLG == 'Y'" (ngModelChange)="siHeader.IGNORE_FLG=$event?'Y':'N'">
+            </div>
+
+
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <button class="k-button k-primary" (click)="onSave()">Save</button>
+                <button class="k-button k-primary" id="back" (click)="backToSearch()">Back</button>
+            </div>
+
+        </div>
+
+
+    </div>
+</div>

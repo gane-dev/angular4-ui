@@ -1,0 +1,10 @@
+﻿
+<div *ngIf="!transactions">
+    <cia-si-header [(siHeader)] ="siHeader "></cia-si-header>
+</div>
+
+<div *ngIf="transactions">
+    <cia-si-details [siDetails] ="siDetails | async"></cia-si-details>
+</div>
+
+ 
